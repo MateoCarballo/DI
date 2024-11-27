@@ -27,18 +27,7 @@ public class MyCardLayout extends JFrame{
        setLocationRelativeTo(null);
    } 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     public static void main(String[] args) {
        
