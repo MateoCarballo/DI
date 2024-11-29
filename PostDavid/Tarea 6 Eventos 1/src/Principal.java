@@ -4,6 +4,7 @@ import java.awt.*;
 public class Principal extends JFrame {
     private int tamanoX;
     private int tamanoY;
+    private JMenuBar jMenuBar;
     private JLabel jLabel;
     private JSlider jSlider;
     private JComboBox <String> jComboBox;
@@ -15,13 +16,8 @@ public class Principal extends JFrame {
 
 
     Principal(){
-        tamanoX = 800;
-        tamanoY=800;
-        obtenerTamanoPantalla();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(tamanoX,tamanoY);
-        setTitle("Ejercicio 6");
-        setLayout(null);
+        definirPantalla();
+        setMenuu();
         setLabel();
         setSlider();
         setCombobox();
@@ -30,11 +26,47 @@ public class Principal extends JFrame {
         setVisible(true);
     }
 
+    private void definirPantalla(){
+        tamanoX = 800;
+        tamanoY=800;
+        obtenerTamanoPantalla();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(tamanoX,tamanoY);
+        setTitle("Ejercicio 6");
+        setLayout(null);
+    }
+
     private void obtenerTamanoPantalla() {
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (pantalla.width - getWidth()) / 2;
         int y = (pantalla.height - getHeight()) / 2;
         setLocation(x -(tamanoX/2), y - (tamanoY/2));
+    }
+
+
+
+    private void setMenuu() {
+        //Instancio la barra de menu de la ventana
+        jMenuBar = new JMenuBar();
+
+        //Opciones del menu a primer nivel
+        JMenu jMenuSlide = new JMenu("Slider");
+        JMenu jMenuModificaLabel = new JMenu("Label");
+
+        // Opciones del menu a segundo nivel
+        JMenuItem jMenuItemAbrirSlider = new JMenuItem("Abrir Slider");
+        jMenuSlide.add(jMenuItemAbrirSlider);
+
+        JMenuItem jMenuItemCambiarColorSlider = new JMenuItem("Modificar color label");
+        jMenuModificaLabel.add(jMenuItemCambiarColorSlider);
+
+        //Relacionamos las opciones jMenuItem a cada JMenu
+        jMenuBar.add(jMenuSlide);
+        jMenuBar.add(jMenuModificaLabel);
+
+        //Agregamos el jMenuBar al frame
+        setJMenuBar(jMenuBar);
+
     }
 
     private void setLabel() {
@@ -66,7 +98,7 @@ public class Principal extends JFrame {
 
 
     private void setTextArea() {
-        jTextArea = new JTextArea("Texto del constructor",15,2);
+        jTextArea = new JTextArea("Texto del constructor");
         jTextArea.setBounds(150,250,300,300);
         add(jTextArea);
     }
