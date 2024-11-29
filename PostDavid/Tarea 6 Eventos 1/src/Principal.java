@@ -1,9 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Principal extends JFrame {
-    private int tamanoX;
-    private int tamanoY;
+public class Principal extends JFrame{
+    private final int tamanoX = 800;
+    private final int tamanoY = 800;
     private JMenuBar jMenuBar;
     private JLabel jLabel;
     private JSlider jSlider;
@@ -13,6 +15,7 @@ public class Principal extends JFrame {
     private JRadioButton jRadioButtonMasculino;
     private JRadioButton jRadioButtonFemenino;
     private JButton jButton;
+    private VentanaJSlider ventanaSlider;
 
 
     Principal(){
@@ -28,11 +31,8 @@ public class Principal extends JFrame {
     }
 
     private void definirPantalla(){
-        tamanoX = 800;
-        tamanoY=800;
         obtenerTamanoPantalla();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(tamanoX,tamanoY);
         setTitle("Ejercicio 6");
         setLayout(null);
     }
@@ -41,7 +41,7 @@ public class Principal extends JFrame {
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (pantalla.width - getWidth()) / 2;
         int y = (pantalla.height - getHeight()) / 2;
-        setLocation(x -(tamanoX/2), y - (tamanoY/2));
+        setBounds(x -(tamanoX/2), y - (tamanoY/2),tamanoX,tamanoY);
     }
 
 
@@ -56,10 +56,21 @@ public class Principal extends JFrame {
 
         // Opciones del menu a segundo nivel
         JMenuItem jMenuItemAbrirSlider = new JMenuItem("Abrir Slider");
+        jMenuItemAbrirSlider.addActionListener(actionEvent -> new VentanaJSlider());
         jMenuSlide.add(jMenuItemAbrirSlider);
 
-        JMenuItem jMenuItemCambiarColorSlider = new JMenuItem("Modificar color label");
-        jMenuModificaLabel.add(jMenuItemCambiarColorSlider);
+        JMenuItem jMenuItemCambiarColorLabel = new JMenuItem("Modificar color label");
+        jMenuItemCambiarColorLabel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (jLabel.getBackground() == Color.BLUE){
+                    jLabel.setBackground(Color.RED);
+                }else{
+                    jLabel.setBackground(Color.BLUE);
+                }
+            }
+        });
+        jMenuModificaLabel.add(jMenuItemCambiarColorLabel);
 
         //Relacionamos las opciones jMenuItem a cada JMenu
         jMenuBar.add(jMenuSlide);
@@ -125,6 +136,13 @@ public class Principal extends JFrame {
         jButton.setBounds(200,650,300,50);
         jButton.setOpaque(true);
         jButton.setBackground(Color.LIGHT_GRAY);
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new Opciones();
+            }
+        });
         add(jButton);
+
     }
 }
