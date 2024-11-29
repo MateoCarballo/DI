@@ -12,7 +12,7 @@ public class Principal extends JFrame {
     ButtonGroup buttonGroup;
     private JRadioButton jRadioButtonMasculino;
     private JRadioButton jRadioButtonFemenino;
-
+    private JButton jButton;
 
 
     Principal(){
@@ -23,6 +23,7 @@ public class Principal extends JFrame {
         setCombobox();
         setTextArea();
         setButtonGroup();
+        setButtonOperacion();
         setVisible(true);
     }
 
@@ -117,5 +118,13 @@ public class Principal extends JFrame {
         */
         add(jRadioButtonMasculino);
         add(jRadioButtonFemenino);
+    }
+
+    private void setButtonOperacion(){
+        jButton = new JButton("Lanzar JPane con opciones");
+        jButton.setBounds(200,650,300,50);
+        jButton.setOpaque(true);
+        jButton.setBackground(Color.LIGHT_GRAY);
+        add(jButton);
     }
 }
