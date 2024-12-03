@@ -5,9 +5,9 @@ public class Opciones extends JOptionPane {
     public Opciones() {
         String [] opciones = {"Opcion 1", "Opcion 2", "Salir"};
         int seleccion = JOptionPane.showOptionDialog(
-                null,                          // Componente padre (null para centrar)
-                "¿Qué acción deseas realizar?", // Mensaje principal
-                "Título Personalizado",         // Título de la ventana
+                null,                             // Componente padre (null para centrar)
+                "¿Qué acción deseas realizar?",                 // Mensaje principal
+                "Título Personalizado",                         // Título de la ventana
                 JOptionPane.DEFAULT_OPTION,     // Tipo de opciones (botones personalizados)
                 JOptionPane.INFORMATION_MESSAGE, // Tipo de mensaje (ícono de información)
                 null,                           // Ícono personalizado (null para usar el predeterminado)

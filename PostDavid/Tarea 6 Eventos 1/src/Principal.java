@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,8 +8,11 @@ import java.awt.event.ActionListener;
 public class Principal extends JFrame{
     private final int tamanoX = 800;
     private final int tamanoY = 800;
+    private int valorActualSlider = 0;
     private JMenuBar jMenuBar;
     private JLabel jLabel;
+    private JLabel jlabelSlider;
+    private JProgressBar jProgressBar;
     private JSlider jSlider;
     private JComboBox <String> jComboBox;
     private JTextArea jTextArea;
@@ -23,6 +28,8 @@ public class Principal extends JFrame{
         setMenuu();
         setLabel();
         setSlider();
+        setLabelParaSlider();
+        setProgressBar();
         setCombobox();
         setTextArea();
         setButtonGroup();
@@ -96,8 +103,33 @@ public class Principal extends JFrame{
         jSlider.setMajorTickSpacing(1);
         jSlider.setMinorTickSpacing(1);
         jSlider.setPaintTicks(true);
+        valorActualSlider = jSlider.getValue();
         //jSlider.setPaintLabels(true);
+        jSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent changeEvent) {
+                valorActualSlider = jSlider.getValue();
+                jProgressBar.setValue(valorActualSlider);
+                jlabelSlider.setText(valorActualSlider + "%");
+            }
+        });
         add(jSlider);
+
+    }
+
+    private void setLabelParaSlider(){
+        //TODO pendiente
+        jlabelSlider = new JLabel(String.valueOf(valorActualSlider));
+        jlabelSlider.setBounds(150,170,75,35);
+        jlabelSlider.setFont(new Font("Fira Code",Font.BOLD,14));
+        add(jlabelSlider);
+
+    }
+
+    private void setProgressBar(){
+        jProgressBar = new JProgressBar(JProgressBar.HORIZONTAL,0,100);
+        jProgressBar.setValue(valorActualSlider);
+
     }
 
     private void setCombobox() {
