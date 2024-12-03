@@ -3,7 +3,7 @@ import javax.swing.*;
 public class Opciones extends JOptionPane {
 
     public Opciones() {
-        String [] opciones = {"Opcion 1", "Abrir VentanJSlider", "Salir"};
+        String [] opciones = {"Opcion 1", "Abrir VentanaJSlider", "Salir"};
         int seleccion = JOptionPane.showOptionDialog(
                 null,              // Componente padre (null para centrar)
                 "¿Qué acción deseas realizar?",   // Mensaje principal
