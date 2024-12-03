@@ -90,7 +90,7 @@ public class Principal extends JFrame{
 
     private void setLabel() {
         jLabel = new JLabel("Ejercicio con varios componentes");
-        jLabel.setBounds(150,50,500,100);
+        jLabel.setBounds(150,50,500,50);
         jLabel.setFont(new Font("Fira Code",Font.BOLD,25));
         jLabel.setOpaque(true);
         jLabel.setBackground(Color.red);
@@ -99,7 +99,7 @@ public class Principal extends JFrame{
 
     private void setSlider(){
         jSlider = new JSlider(JSlider.HORIZONTAL,0,100,50);
-        jSlider.setBounds(150,200,300,45);
+        jSlider.setBounds(150,200,300,25);
         jSlider.setMajorTickSpacing(1);
         jSlider.setMinorTickSpacing(1);
         jSlider.setPaintTicks(true);
@@ -129,6 +129,8 @@ public class Principal extends JFrame{
     private void setProgressBar(){
         jProgressBar = new JProgressBar(JProgressBar.HORIZONTAL,0,100);
         jProgressBar.setValue(valorActualSlider);
+        jProgressBar.setBounds(150,125,300,20);
+        add(jProgressBar);
 
     }
 
@@ -136,14 +138,22 @@ public class Principal extends JFrame{
         String [] contenidoCombobox = {"Ruben","Mateo","Miriam","Mauro","Ramón","Carlos"};
         jComboBox = new JComboBox<>(contenidoCombobox);
         jComboBox.setBounds(200,600,120,25);
+        jComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                jTextArea.setText("La opción seleccionada en el comboBox es : " + (String) jComboBox.getSelectedItem());
+            }
+        });
         add(jComboBox);
+
     }
 
 
 
     private void setTextArea() {
-        jTextArea = new JTextArea("Texto del constructor");
+        jTextArea = new JTextArea("La opción seleccionada en el comboBox es : " + (String)jComboBox.getSelectedItem());
         jTextArea.setBounds(150,250,300,300);
+        jTextArea.setEditable(false);
         add(jTextArea);
     }
 
