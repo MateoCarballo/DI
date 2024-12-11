@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,10 +37,6 @@ public class Ventana1 extends JFrame {
         setSlideHorizontal();
         setLabel();
         setVisible(true);
-    }
-
-    private void setSlideHorizontal() {
-        
     }
 
 
@@ -198,5 +196,22 @@ public class Ventana1 extends JFrame {
         add(radioButton3);
     }
 
+
+    private void setSlideHorizontal() {
+        sliderHorizontal = new JSlider(JSlider.HORIZONTAL,0,200,50);
+        sliderHorizontal.setBounds(10,260,300,50);
+        sliderHorizontal.setMajorTickSpacing(20); // Espaciado de marcas principales
+        sliderHorizontal.setMinorTickSpacing(5);  // Espaciado de marcas secundarias
+        sliderHorizontal.setPaintTicks(true);     // Mostrar marcas
+        sliderHorizontal.setPaintLabels(true);
+        add(sliderHorizontal);
+        System.out.println("Valor del slider" + sliderHorizontal.getValue());
+        sliderHorizontal.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent changeEvent) {
+                System.out.println("El valor es -> " + sliderHorizontal.getValue());
+            }
+        });
+    }
 
 }
