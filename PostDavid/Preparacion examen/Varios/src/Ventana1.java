@@ -4,15 +4,25 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class Ventana1 extends JFrame {
+    private JCheckBox jCheckBox1;
+    private JCheckBox jCheckBox2;
+    private JCheckBox jCheckBox3;
+
     private JComboBox jComboBox1;
     private JComboBox jComboBox2;
+
     private JButton jbutton1;
     private JButton jbutton2;
-    private JLabel jLabel;
-    private Font fuentePersonalizada1 = new Font("Fira Code Nerd Font Mono", Font.BOLD | Font.ITALIC, 10);
+    private JButton jbuttonCheckBox;
 
+    private JLabel jLabel;
+    private JLabel jLabel2;
+
+    private Font fuentePersonalizada1 = new Font("Fira Code Nerd Font Mono", Font.BOLD | Font.ITALIC, 10);
     private Font fuentePersonalizada2 = new Font("Ink Free", Font.BOLD | Font.ITALIC, 15);
 
     private JRadioButton radioButton1;
@@ -20,11 +30,13 @@ public class Ventana1 extends JFrame {
     private JRadioButton radioButton3;
     private ButtonGroup grupoRadioButtons;
 
+    private JProgressBar progressBar;
+
     private JSlider sliderHorizontal;
 
 
     public Ventana1(){
-        setBounds(900,600,400,400);
+        setBounds(400,200,400,400);
         setTitle("Pruebas examen");
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,8 +47,21 @@ public class Ventana1 extends JFrame {
         setBotonSeleccionarFuente();
         setGrupoDeRadioButtons();
         setSlideHorizontal();
+        setBarraProgreso();
+        setLabel2ValorSlider();
+        setcheckboxes();
         setLabel();
         setVisible(true);
+    }
+
+    private void setBarraProgreso() {
+        progressBar = new JProgressBar();
+        progressBar.setBounds(10,15,350,20);
+        progressBar.setValue(sliderHorizontal.getValue());
+        progressBar.setMaximum(sliderHorizontal.getMaximum());
+        progressBar.setMinimum(sliderHorizontal.getMinimum());
+
+        add(progressBar);
     }
 
 
@@ -112,15 +137,12 @@ public class Ventana1 extends JFrame {
         jbutton1.setBounds(10,50,150,50);
         jbutton1.setVisible(true);
         add(jbutton1);
-        jbutton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                int indiceSeleccionado = jComboBox1.getSelectedIndex();
-                switch (indiceSeleccionado){
-                    case 0 -> new Ventana2();
-                    case 1 -> new Ventana3();
-                    case 2 -> System.out.println("Elegida ventana 4");
-                }
+        jbutton1.addActionListener(actionEvent -> {
+            int indiceSeleccionado = jComboBox1.getSelectedIndex();
+            switch (indiceSeleccionado){
+                case 0 -> new Ventana2();
+                case 1 -> new Ventana3();
+                case 2 -> System.out.println("Elegida ventana 4");
             }
         });
     }
@@ -209,7 +231,61 @@ public class Ventana1 extends JFrame {
         sliderHorizontal.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent changeEvent) {
-                System.out.println("El valor es -> " + sliderHorizontal.getValue());
+                jLabel2.setText(String.valueOf(sliderHorizontal.getValue()));
+                if ((sliderHorizontal.getValue() > 75) && (sliderHorizontal.getValue() <= 100)){
+                    jLabel2.setBackground(Color.ORANGE);
+                }if ((sliderHorizontal.getValue() > 100)) {
+                    jLabel2.setBackground(Color.RED);
+                }else{
+                    jLabel2.setBackground(null);
+                }
+                progressBar.setValue(sliderHorizontal.getValue());
+            }
+        });
+    }
+
+    private void setLabel2ValorSlider() {
+        jLabel2 = new JLabel(String.valueOf(sliderHorizontal.getValue()));
+        //sliderHorizontal.setBounds(10,260,300,50);
+        jLabel2.setBounds(320,260, 30, 30);
+        jLabel2.setOpaque(true);
+        add(jLabel2);
+
+    }
+
+
+    private void setcheckboxes() {
+        jCheckBox1 = new JCheckBox("Checkbox 1");
+        jbuttonCheckBox = new JButton("NO PUEDES PASAR!");
+        //jCheckBox2 = new JCheckBox("Checkbox 2");
+        //jCheckBox3 = new JCheckBox("Checkbox 3");
+
+        jCheckBox1.setBounds(230, 170, 150, 30);
+        jbuttonCheckBox.setBounds(230, 210, 150, 30);
+        //radioButton1.setBounds(10, 170, 150, 30); //
+        //jCheckBox2
+        //jCheckBox3
+
+        jCheckBox1.setSelected(false);
+        jbuttonCheckBox.setEnabled(false);
+
+        add(jCheckBox1);
+        add(jbuttonCheckBox);
+        //add(jCheckBox2);
+        //add(jCheckBox3);
+
+        jCheckBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (!jCheckBox1.isSelected()){
+                    jbuttonCheckBox.setEnabled(false);
+                    jbuttonCheckBox.setText("NO PUEDES PASAR!");
+
+                }
+                if (jCheckBox1.isSelected()){
+                    jbuttonCheckBox.setEnabled(true);
+                    jbuttonCheckBox.setText("ADELANTE LEONES");
+                }
             }
         });
     }
