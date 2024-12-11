@@ -1,3 +1,5 @@
+package Basic;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -8,31 +10,27 @@ public class Ventana3 extends JFrame {
 
     public Ventana3(){
         setTitle("Testing");
-        setBounds(200,200,400,500);
+        setBounds(100,500,400,500);
         setLayout(null);
-        setVisible(true);
+        crearJTextFields();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        buton1();
-        jlabel();
+        setVisible(true);
     }
 
-    private void buton1(){
-        JButton jButton=new JButton("Hola");
-        jButton.setBounds(10,10,100,80);
+    public void crearJTextFields(){
+        JTextField jTextField1 = new JTextField();
+        jTextField1.setBounds(10,50,100,50);
+        JTextField jTextField2 = new JTextField();
+        jTextField2.setBounds(10,100,100,50);
+        JTextField jTextField3 = new JTextField();
+        jTextField3.setBounds(10,150,100,50);
+        JButton jButton = new JButton("Sumar");
+        jButton.setBounds(10,250,100,50);
+        add(jTextField1);
+        add(jTextField2);
+        add(jTextField3);
         add(jButton);
-        jButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                ventana1 = new Ventana1();
-                ventana1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            }
-        });
-    }
-    private void jlabel(){
-        JLabel jLabel=new JLabel("label");
-        jLabel.setBounds(200,50,50,50);
-        add(jLabel);
-        jLabel.addMouseListener(new MouseListener() {
+        jButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
 
@@ -50,15 +48,16 @@ public class Ventana3 extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
-            jLabel.setText("change");
+                jTextField3.setText(String.valueOf(Integer.parseInt(jTextField1.getText()) + Integer.parseInt(jTextField2.getText())));
             }
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-            jLabel.setText("label");
+
             }
         });
     }
+
 }
 
 
