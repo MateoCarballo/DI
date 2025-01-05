@@ -149,12 +149,19 @@ Aqui me encargo de poner el booleano a false una vez se suelte la tecla para pod
     @Override
     public void keyReleased(KeyEvent e) {
         teclaPresionada = false;
-
+        //Tengo que registrar aqui cualquier tecla tecleada por consola porque en el evneto typed solo se pueden registrar teclas visibles (letras, numeros y simbolos)
+        System.out.println(e.getKeyChar());
     }
-
+/*
+Cerrarmos la app si se pulsa la tecla escape con una ventana de confirmacion
+ */
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyChar() == KeyEvent.VK_ESCAPE) {
-            System.exit(0); // Cerrar la aplicación
-        }    }
+            int opcion = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
+        }
+    }
 }
