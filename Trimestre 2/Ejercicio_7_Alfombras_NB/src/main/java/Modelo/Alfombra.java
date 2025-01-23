@@ -11,14 +11,14 @@ package Modelo;
 public class Alfombra {
     private String modelo;
     private String cor;
-    private String ancho;
-    private String alto;
+    private double ancho;
+    private double alto;
     
     public Alfombra(){
         
     }
 
-    public Alfombra(String modelo, String cor, String ancho, String alto) {
+    public Alfombra(String modelo, String cor, double ancho, double alto) {
         this.modelo = modelo;
         this.cor = cor;
         this.ancho = ancho;
@@ -41,21 +41,23 @@ public class Alfombra {
         this.cor = cor;
     }
 
-    public String getAncho() {
+    public double getAncho() {
         return ancho;
     }
 
-    public void setAncho(String ancho) {
+    public void setAncho(double ancho) {
         this.ancho = ancho;
     }
 
-    public String getAlto() {
+    public double getAlto() {
         return alto;
     }
 
-    public void setAlto(String alto) {
+    public void setAlto(double alto) {
         this.alto = alto;
-    } 
+    }
+
+   
     
     @Override
     public String toString() { // Importante: Representación en cadena

@@ -9,6 +9,7 @@ package Controlador;
  */
 
 import Modelo.Alfombra;
+import Modelo.Model;
 import Vista.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,15 +19,16 @@ import javax.swing.JOptionPane;
 public class Controller implements ActionListener{
     
     private View view;
-    private Alfombra model;
+    private Model model;
     
-    public Controller(View view,Alfombra model){
+    public Controller(View view,Model model){
         this.view = view;
         this.model = model;
         this.view.getjButtonEngadir().addActionListener(this);
         this.view.getjButtonInformacion().addActionListener(this);
         this.view.getjButtonEliminarAlfombra().addActionListener(this);
         this.view.getjButtonEliminarTodas().addActionListener(this);
+        
     }
     
     public void añadir(){
@@ -48,19 +50,13 @@ public class Controller implements ActionListener{
         String comando = e.getActionCommand();
         System.out.println("Comando recibido" + comando);
         if (comando.equals("engadir")){
-            String alto = this.view.getJTextAlto().getText();
-            String ancho = this.view.getJTextAncho().getText();
-            String cor = this.view.getJTextCor().getText();
-            String modelo = this.view.getJTextModelo().getText();
-
-            if (!alto.isEmpty() && !ancho.isEmpty() && !cor.isEmpty() && !modelo.isEmpty()){
-                DefaultListModel<String> modeloLista = view.getModeloListaAlfombras();
-                modeloLista.addElement(nombreAlfombra);
-                view.getListaAlfombras().setModel(modeloLista);
-                view.getNombreAlfombra().setText("");
-            }else{
-                JOptionPane.showMessageDialog(null,"Completa todos los campos","Error en la insercion",JOptionPane.ERROR_MESSAGE);
-            }
+            //Adquirimos los datos de los JTextField y llamados al modelo para que gestione los elementos y el controlador con los nuevos datos se los pasara a la vista
+            this.view.getjList2().setModel(this.model.engadirAlfombra(this.view.getJTextModelo().getText(), this.view.getJTextCor().getText(), this.view.getJTextAncho().getText(), this.view.getJTextAlto().getText(), this.view.getjList2()));
+            //Vaciamos los campos de los JTextField de modelo, color, ancho y alto
+            this.view.getJTextModelo().setText("");
+            this.view.getJTextCor().setText("");
+            this.view.getJTextAncho().setText("");
+            this.view.getJTextAlto().setText("");
         }
         
         if (comando.equals("eliminarTodas")){
@@ -71,7 +67,7 @@ public class Controller implements ActionListener{
             
         }
         if (comando.equals("mostrasInformacion")){
-        JOptionPane.showMessageDialog(null, "Esta es la ventana emergente", "Título de la ventana",JOptionPane.INFORMATION_MESSAGE );
+            
         }
     }
     

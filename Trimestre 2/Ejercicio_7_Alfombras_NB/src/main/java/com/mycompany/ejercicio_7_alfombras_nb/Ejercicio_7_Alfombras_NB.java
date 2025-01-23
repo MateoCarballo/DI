@@ -6,7 +6,7 @@ package com.mycompany.ejercicio_7_alfombras_nb;
 
 import Controlador.Controller;
 import Vista.View;
-import Modelo.Alfombra;
+import Modelo.Model;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Ejercicio_7_Alfombras_NB {
 
     public static void main(String[] args) {
         System.out.println("Arrancando");
-        Alfombra model = new Alfombra();
+        Model model = new Model();
         View view = new View();
         Controller controller = new Controller(view,model);
         System.out.println("Completado arranque");
