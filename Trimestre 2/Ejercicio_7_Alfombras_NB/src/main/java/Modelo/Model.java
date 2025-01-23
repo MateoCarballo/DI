@@ -49,7 +49,7 @@ public class Model {
     public DefaultListModel<String> devolverListadoString(ArrayList<Alfombra> alfombras){
         ArrayList listadoComoString = new ArrayList<>();
         for(Alfombra a :alfombras){
-            listadoComoString.add(a.toString());
+            listadoComoString.add(a.getModelo());
 
         }
         return convertirArrayListADefaultListModel(listadoComoString); 
@@ -62,5 +62,30 @@ public class Model {
         }
         return modelo;
     }
+     
+     
+     public DefaultListModel<String> eliminarAlfombraPorIndice(int indice){
+         //Eliminamos el indice que ocupa en la lista de objetos alfombra
+         alfombras.remove(indice);
+         //Llamamos al metodo que convierte el arrayList de Alfombras en un ArrayList 
+         //de String y llamo a otro metodo que lo convierte en 
+         //una lista valida para el componente JList de nuestra vista
+         return devolverListadoString(this.alfombras);  
+     }
+     
+     public DefaultListModel<String> eliminarAlfombras(){
+         //Borramos todo el arrayList
+         alfombras.clear();
+         //Devolvemos el nuevo arrayListVacio
+         return devolverListadoString(this.alfombras);  
+     }
+     
+     public String[] informacionAlfombra(int indice){
+        return new String[] {
+            alfombras.get(indice).getModelo(),
+            alfombras.get(indice).getCor(),
+            String.valueOf(alfombras.get(indice).getAncho()),
+            String.valueOf(alfombras.get(indice).getAlto())};     
+     }
     
 }

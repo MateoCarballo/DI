@@ -59,15 +59,34 @@ public class Controller implements ActionListener{
             this.view.getJTextAlto().setText("");
         }
         
-        if (comando.equals("eliminarTodas")){
+        
+        if (comando.equals("eliminarAlfombra")){
+            //Le pedimos a la vista el indice de la alfombra que queremos eliminar y 
+            //se la pasamos al modelo para que la borre del arrayList de las alfombras y la vuelva a setear
+             this.view.getjList2().setModel(this.model.eliminarAlfombraPorIndice(this.view.getjList2().getSelectedIndex()));
             
         }
         
-        if (comando.equals("eliminarAlfombra")){
+        if (comando.equals("eliminarTodas")){
+            this.view.getjList2().setModel(this.model.eliminarAlfombras());
             
         }
+        
         if (comando.equals("mostrasInformacion")){
-            
+         
+         
+         if (this.view.getjList2().getSelectedIndex() >= 0) { // Verificar que el índice sea válido
+        String[] info = this.model.informacionAlfombra(this.view.getjList2().getSelectedIndex());
+        String mensaje = "Modelo: " + info[0] + "\n"
+                       + "Color: " + info[1] + "\n"
+                       + "Ancho: " + info[2] + "\n"
+                       + "Alto: " + info[3];
+
+        JOptionPane.showMessageDialog(null, mensaje, "Información de la Alfombra", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+        JOptionPane.showMessageDialog(null, "Índice inválido o no se seleccionó ninguna alfombra.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+         
         }
     }
     
