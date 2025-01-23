@@ -4,17 +4,27 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mateo
  */
-public class Vista extends javax.swing.JFrame {
-
+public class View extends javax.swing.JFrame {
     /**
      * Creates new form ControlJList
      */
-    public Vista() {
+    public View() {
         initComponents();
+        setearJListAlfombras();
+        setearComandosBotones();
+        setVisible(true);
+        setTitle("Ejercicio 7 componente JList");
     }
 
     /**
@@ -137,15 +147,14 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(jButtonEngadir))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelAlto)
-                            .addComponent(JTextAlto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCm)
-                            .addComponent(jLabelAltoCm))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelAncho)
-                            .addComponent(JTextAncho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelAlto)
+                        .addComponent(JTextAlto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelCm)
+                        .addComponent(jLabelAltoCm))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelAncho)
+                        .addComponent(JTextAncho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelCor)
                         .addComponent(JTextCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -175,10 +184,10 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jList1.setModel(new javax.swing.AbstractListModel<Alfombra>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(jList1);
 
@@ -283,21 +292,23 @@ public class Vista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vista().setVisible(true);
+                new View().setVisible(true);
             }
         });
     }
@@ -317,9 +328,63 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCm;
     private javax.swing.JLabel jLabelCor;
     private javax.swing.JLabel jLabelModelo;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<Alfombra> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private void setearComandosBotones() {
+        jButtonEngadir.setActionCommand("engadir");
+        jButtonEliminarTodas.setActionCommand("eliminarTodas");
+        jButtonEliminarAlfombra.setActionCommand("eliminarAlfombra");
+        jButtonInformacion.setActionCommand("mostrasInformacion");   
+    }
+
+    //Getters de los botones para codificar cada accion para el escuchador ( clase controller )
+    
+    
+    public JButton getjButtonEliminarAlfombra() {
+        return this.jButtonEliminarAlfombra;
+    }
+
+    public JButton getjButtonEliminarTodas() {
+        return this.jButtonEliminarTodas;
+    }
+
+    public JButton getjButtonEngadir() {
+        return this.jButtonEngadir;
+    }
+
+    public JButton getjButtonInformacion() {
+        return this.jButtonInformacion;
+    }
+
+    //Getter de los campos que podemos introducir por teclado para el boton añadir
+
+    public JTextField getJTextAlto() {
+        return this.JTextAlto;
+    }
+
+    public JTextField getJTextAncho() {
+        return this.JTextAncho;
+    }
+
+    public JTextField getJTextCor() {
+        return this.JTextCor;
+    }
+
+    public JTextField getJTextModelo() {
+        return this.JTextModelo;
+    }
+
+    private void setearJListAlfombras() {
+    modeloListaAlfombras = new DefaultListModel<>();
+    listaAlfombras = new JList<>(modeloListaAlfombras);
+    add(new JScrollPane(listaAlfombras));
+    }
+    
+   
+    
+    
 }

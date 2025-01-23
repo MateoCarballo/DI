@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Objeto;
+package Modelo;
 
 /**
  *
@@ -55,10 +55,10 @@ public class Alfombra {
 
     public void setAlto(String alto) {
         this.alto = alto;
+    } 
+    
+    @Override
+    public String toString() { // Importante: Representación en cadena
+        return "Modelo: " + modelo + ", Color: " + cor + ", Ancho: " + ancho + ", Alto: " + alto;
     }
-    
-    
-   
-    
-    
 }

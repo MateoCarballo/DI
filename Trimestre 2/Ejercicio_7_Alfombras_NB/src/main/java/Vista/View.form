@@ -101,17 +101,15 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jLabelAlto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="JTextAlto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelCm" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelAltoCm" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelAncho" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="JTextAncho" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="jLabelAlto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTextAlto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAltoCm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelAncho" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTextAncho" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelCor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -284,7 +282,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alfombra&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>
