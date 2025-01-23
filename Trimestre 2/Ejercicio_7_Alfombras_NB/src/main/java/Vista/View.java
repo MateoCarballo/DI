@@ -4,15 +4,9 @@
  */
 package Vista;
 
-import java.awt.Dimension;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import Modelo.Alfombra;
 
 /**
  *
@@ -327,6 +321,10 @@ public class View extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setearComandosBotones() {
+        /*
+        Le decimos a cada boton como se va a llamar, esto es importante para que el escuchador ( controller en nuestro caso)
+        sepa que boton estamos pulsando y actue en consecuencia
+        */
         jButtonEngadir.setActionCommand("engadir");
         jButtonEliminarTodas.setActionCommand("eliminarTodas");
         jButtonEliminarAlfombra.setActionCommand("eliminarAlfombra");
@@ -351,8 +349,6 @@ public class View extends javax.swing.JFrame {
     public JButton getjButtonInformacion() {
         return this.jButtonInformacion;
     }
-
-    //Getter de los campos que podemos introducir por teclado para el boton añadir
 
     public JTextField getJTextAlto() {
         return this.JTextAlto;
