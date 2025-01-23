@@ -22,6 +22,12 @@ public class Model {
         alfombras.add(new Alfombra("b","b",22.22,33.33));
 
     }
+
+    public ArrayList<Alfombra> getAlfombras() {
+        return alfombras;
+    }
+    
+    
     
     public DefaultListModel<String> engadirAlfombra(String modelo, String cor,  String ancho, String alto, JList jlist){
        
