@@ -6,19 +6,27 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author mateo
  */
 public class View extends javax.swing.JFrame {
+     DefaultTableModel tableModel;
     /**
      * Creates new form ControlJList
      */
+    
     public View() {
         initComponents();
         setearComandosBotones();
+        setearTabla();
         setVisible(true);
         setTitle("Ejercicio 7 componente JList");
     }
@@ -49,7 +57,7 @@ public class View extends javax.swing.JFrame {
         jButtonEliminarAlfombra = new javax.swing.JButton();
         jButtonEliminarTodas = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,7 +116,7 @@ public class View extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelModelo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTextModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
+                        .addComponent(JTextModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelCor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,7 +184,9 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane2.setViewportView(jList2);
+        javax.swing.table.DefaultTableModel modeloTabla = new DefaultTableModel();
+        jTable2.setModel(modeloTabla);
+        jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -195,15 +205,16 @@ public class View extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButtonInformacion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonEliminarAlfombra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonEliminarTodas)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonInformacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEliminarAlfombra)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEliminarTodas))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(148, 148, 148))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,8 +234,7 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -314,10 +324,10 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCm;
     private javax.swing.JLabel jLabelCor;
     private javax.swing.JLabel jLabelModelo;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
     private void setearComandosBotones() {
@@ -366,14 +376,6 @@ public class View extends javax.swing.JFrame {
         return this.JTextModelo;
     }
 
-    public JList<String> getjList2() {
-        return jList2;
-    }
-
-    public void setjList2(JList<String> jList2) {
-        this.jList2 = jList2;
-    }
-
     public void setJTextAlto(JTextField JTextAlto) {
         this.JTextAlto = JTextAlto;
     }
@@ -389,7 +391,32 @@ public class View extends javax.swing.JFrame {
     public void setJTextModelo(JTextField JTextModelo) {
         this.JTextModelo = JTextModelo;
     }
+
+    public JTable getjTable2() {
+        return jTable2;
+    }
+
+    public void setjTable2(JTable jTable2) {
+        this.jTable2 = jTable2;
+    }  
+
+    public DefaultTableModel getTableModel() {
+        return tableModel;
+    }
+
+    public void setTableModel(DefaultTableModel tableModel) {
+        this.tableModel = tableModel;
+    }
     
+
+    private void setearTabla() {
+        tableModel = new DefaultTableModel();
+        String [] cabecera = {"Nombre","Color","Ancho","Alto"};
+        tableModel.setColumnIdentifiers(cabecera);
+        jTable2.setModel(tableModel);
+    }
+
     
+
     
 }

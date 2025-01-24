@@ -58,9 +58,7 @@ public class Alfombra {
     }
 
    
-    
-    @Override
-    public String toString() { // Importante: Representación en cadena
-        return "Modelo: " + modelo + ", Color: " + cor + ", Ancho: " + ancho + ", Alto: " + alto;
+    public String[] toArrayOfString() {
+        return new String [] {modelo,cor,String.valueOf(ancho),String.valueOf(alto)};
     }
 }
