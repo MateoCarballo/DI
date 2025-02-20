@@ -15,6 +15,7 @@ public class VentanaPrincipal extends JFrame{
     public void crearVentana(){
         setTitle("Gestión de Empresa");
         setSize(400, 200);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(4, 1));
 

@@ -16,6 +16,9 @@ public class Controlador implements ActionListener {
     private VentanaAltaTrabajador ventanaAltaTrabajador;
     private VentanaTrabajadoresDisponibles ventanaTrabajadoresDisponibles;
     private Modelo modelo;
+    private boolean ventanaProvinciasAbierta = false;
+    private boolean ventanaProfesionesAbierta = false;
+    private boolean ventanaTrabajadoresDisponiblesAbierta = false;
 
     public Controlador( ) {
 
@@ -39,14 +42,26 @@ public class Controlador implements ActionListener {
 
     // Instanciar las nuevas ventanas
     public void abrirVentanaProvincias() {
-        if (ventanaProvincias == null || !ventanaProvincias.isVisible()) {
+        if ((ventanaProvincias == null || !ventanaProvincias.isVisible() && !ventanaProvinciasAbierta) ) {
             ventanaProvincias = new VentanaProvincias(this);
+        }else{
+            JOptionPane.showMessageDialog(null,
+                    "Ya tienes una ventana abierta",
+                    "Advertencia",
+                    JOptionPane.WARNING_MESSAGE);
+
         }
     }
 
     public void abrirVentanaProfesiones() {
-        if (ventanaProfesiones == null || !ventanaProfesiones.isVisible()) {
+        if ((ventanaProfesiones == null || !ventanaProfesiones.isVisible()) && !ventanaProfesionesAbierta) {
             ventanaProfesiones = new VentanaProfesiones(this);
+        }else{
+            JOptionPane.showMessageDialog(null,
+                    "Ya tienes una ventana abierta",
+                    "Advertencia",
+                    JOptionPane.WARNING_MESSAGE);
+
         }
     }
 
@@ -55,8 +70,14 @@ public class Controlador implements ActionListener {
     }
 
     public void abrirVentanaTrabajadoresDisponibles() {
-        if (ventanaTrabajadoresDisponibles == null || !ventanaTrabajadoresDisponibles.isVisible()) {
-            ventanaTrabajadoresDisponibles = new VentanaTrabajadoresDisponibles(this);
+        if ((ventanaTrabajadoresDisponibles == null || !ventanaTrabajadoresDisponibles.isVisible()) && !ventanaTrabajadoresDisponiblesAbierta) {
+            ventanaTrabajadoresDisponibles = new VentanaTrabajadoresDisponibles(this,modelo.getTrabajadores());
+        }else{
+            JOptionPane.showMessageDialog(null,
+                    "Ya tienes una ventana abierta",
+                    "Advertencia",
+                    JOptionPane.WARNING_MESSAGE);
+
         }
     }
 

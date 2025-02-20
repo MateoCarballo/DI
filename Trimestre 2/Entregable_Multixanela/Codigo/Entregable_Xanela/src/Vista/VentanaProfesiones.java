@@ -22,7 +22,8 @@ public class VentanaProfesiones extends JFrame {
 
     private void configurarVentana() {
         setTitle("Gestión de Profesiones");
-        setSize(300, 200);
+        setSize(600, 300);
+        setLocationRelativeTo(null);
         setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }

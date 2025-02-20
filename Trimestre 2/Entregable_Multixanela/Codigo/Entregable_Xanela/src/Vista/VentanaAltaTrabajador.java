@@ -30,6 +30,7 @@ public class VentanaAltaTrabajador extends JFrame {
         setTitle("Alta de Traballador");
         setSize(650, 550);
         setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setBackground(new Color(230, 240, 250)); // Fondo suave
