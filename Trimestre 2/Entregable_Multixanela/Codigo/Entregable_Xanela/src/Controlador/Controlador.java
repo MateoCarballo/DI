@@ -6,6 +6,8 @@ import Vista.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Controlador implements ActionListener {
     private VentanaPrincipal ventanaPrincipal;
@@ -49,7 +51,7 @@ public class Controlador implements ActionListener {
     }
 
     public void abrirVentanaAltaTrabajador() {
-        ventanaAltaTrabajador = new VentanaAltaTrabajador(this);
+        ventanaAltaTrabajador = new VentanaAltaTrabajador(this, modelo.getProvincias(), modelo.getProfesiones());
     }
 
     public void abrirVentanaTrabajadoresDisponibles() {
@@ -116,6 +118,16 @@ public class Controlador implements ActionListener {
         ventanaProvincias.getComboProvincias().setModel(new DefaultComboBoxModel<>(nuevaListaProvincias));
     }
 
+    private void agregarTraballador(
+            String txtNome,
+            String txtApelido1,
+            String txtApelido2,
+            String txtDNI,
+            String profesion,
+            String provincia) {
+        if(!modelo.existeTrabajador(txtDNI)) modelo.agregarTrabajador(txtNome,txtApelido1,txtApelido2,txtDNI,profesion,provincia);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();  // Obtiene el comando del botón
@@ -144,10 +156,21 @@ public class Controlador implements ActionListener {
             case "ELIMINAR_PROFESION":
                 eliminarProfesion(ventanaProfesiones.getTxtField().getText());
                 break;
+            case "ALTA_TRABALLADOR":
+                agregarTraballador(
+                        ventanaAltaTrabajador.getTxtNome().getText(),
+                        ventanaAltaTrabajador.getTxtApelido1().getText(),
+                        ventanaAltaTrabajador.getTxtApelido2().getText(),
+                        ventanaAltaTrabajador.getTxtDNI().getText(),
+                        Objects.requireNonNull(ventanaAltaTrabajador.getComboProvincia().getSelectedItem()).toString(),
+                        ventanaAltaTrabajador.getListaProfesion().getSelectedValue());
+                break;
             default:
                 System.out.println("Acción desconocida: " + comando);
         }
     }
+
+
 
     /**
      *

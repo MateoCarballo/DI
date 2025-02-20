@@ -16,6 +16,7 @@ public class Modelo {
         provincias = new ArrayList<>();
         profesiones = new ArrayList<>();
         trabajadores = new ArrayList<>();
+        cargarDatosDePrueba();
     }
 
     public Controlador getController() {
@@ -96,4 +97,36 @@ public class Modelo {
         profesiones.remove(profesionParaEliminar);
         return profesiones.toArray(new String[profesiones.size()]);
     }
+
+    public boolean existeTrabajador(String txtDNI) {
+        for (Trabajador t : trabajadores){
+            if (t.getDni().equalsIgnoreCase(txtDNI)) return true;
+        }
+        return false;
+    }
+
+    public void agregarTrabajador(String txtNome, String txtApelido1, String txtApelido2, String txtDNI, String profesion, String provincia) {
+        trabajadores.add(new Trabajador(txtDNI,txtNome,txtApelido1,txtApelido2,provincia,profesion));
+    }
+
+
+
+
+    //METODO PARA PROBAR
+    public void cargarDatosDePrueba() {
+        // Agregar provincias de prueba
+        provincias.addAll(Arrays.asList("A Coruña", "Lugo", "Ourense", "Pontevedra", "Madrid", "Barcelona"));
+
+        // Agregar profesiones de prueba
+        profesiones.addAll(Arrays.asList("Ingeniero", "Médico", "Profesor", "Abogado", "Carpintero", "Electricista"));
+
+        // Agregar trabajadores de prueba
+        trabajadores.add(new Trabajador("12345678A", "Juan", "Pérez", "Gómez", "Madrid", "Ingeniero"));
+        trabajadores.add(new Trabajador("87654321B", "María", "López", "Fernández", "Barcelona", "Médico"));
+        trabajadores.add(new Trabajador("11223344C", "Carlos", "Rodríguez", "Sánchez", "A Coruña", "Profesor"));
+        trabajadores.add(new Trabajador("22334455D", "Laura", "González", "Martínez", "Lugo", "Abogado"));
+        trabajadores.add(new Trabajador("33445566E", "Pedro", "Fernández", "Pérez", "Ourense", "Carpintero"));
+        trabajadores.add(new Trabajador("44556677F", "Ana", "Gómez", "Rodríguez", "Pontevedra", "Electricista"));
+    }
+
 }
