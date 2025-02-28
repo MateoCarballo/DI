@@ -1,1 +1,9 @@
+com\mycompany\ejercicio12_multixanela_dmi\controlador\Controlador.class
+com\mycompany\ejercicio12_multixanela_dmi\vista\InternalFrameProfesiones.class
+com\mycompany\ejercicio12_multixanela_dmi\vista\InternalFrameAltaTraballador.class
+com\mycompany\ejercicio12_multixanela_dmi\modelo\Modelo.class
+com\mycompany\ejercicio12_multixanela_dmi\modelo\Trabajador.class
+com\mycompany\ejercicio12_multixanela_dmi\vista\VentanaContenedora.class
 com\mycompany\ejercicio12_multixanela_dmi\Ejercicio12_Multixanela_DMI.class
+com\mycompany\ejercicio12_multixanela_dmi\vista\InternalFrameProvincias.class
+com\mycompany\ejercicio12_multixanela_dmi\vista\InternalFrameTraballadoresDispoñibles.class

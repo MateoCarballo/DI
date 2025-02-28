@@ -7,7 +7,6 @@ package com.mycompany.ejercicio12_multixanela_dmi.vista;
 import com.mycompany.ejercicio12_multixanela_dmi.controlador.Controlador;
 import java.awt.event.ActionListener;
 import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
 
 /**
  *
@@ -21,7 +20,6 @@ public class VentanaContenedora extends javax.swing.JFrame {
         this.controlador = c;
         initComponents();
         anhadirControlador();
-
         setLocationRelativeTo(null);
     }
     
@@ -29,12 +27,12 @@ public class VentanaContenedora extends javax.swing.JFrame {
         jMenuItem1.addActionListener((ActionListener)controlador);
         jMenuItem2.addActionListener((ActionListener)controlador);
         jMenuItem3.addActionListener((ActionListener)controlador);
-        jMenuItem4.addActionListener((ActionListener)controlador);
+        jMenuItem5.addActionListener((ActionListener)controlador);
         
         jMenuItem1.setActionCommand("ALTA_TRABAJADOR");
         jMenuItem2.setActionCommand("PROVINCIAS");
         jMenuItem3.setActionCommand("PROFESIONES");
-        jMenuItem4.setActionCommand("VER_TRABAJADORES");
+        jMenuItem5.setActionCommand("VER_TRABAJADORES");
     }
 
     public JDesktopPane getjDesktopPane1() {
@@ -75,15 +73,18 @@ public class VentanaContenedora extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         setSize(new java.awt.Dimension(600, 400));
 
+        jDesktopPane1.setBackground(new java.awt.Color(20, 130, 241));
+        jDesktopPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
+            .addGap(0, 838, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 573, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Xestión");
@@ -132,9 +133,9 @@ public class VentanaContenedora extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public static void main(String args[]) {
-     
-    }
+   public static void main(String args[]) {
+   
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

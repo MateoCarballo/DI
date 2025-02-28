@@ -3,7 +3,7 @@ package com.mycompany.ejercicio12_multixanela_dmi.modelo;
 import com.mycompany.ejercicio12_multixanela_dmi.controlador.Controlador;
 import java.util.*;
 
-public class Modelo {
+public final class Modelo {
 
     private Controlador controller;
     private ArrayList<String> provincias ;
@@ -14,7 +14,6 @@ public class Modelo {
         provincias = new ArrayList<>();
         profesiones = new ArrayList<>();
         trabajadores = new ArrayList<>();
-        cargarDatosDePrueba();
     }
 
     public Controlador getController() {
@@ -59,7 +58,7 @@ public class Modelo {
 
     public String[] addProvincia(String nuevaProvincia) {
         provincias.add(nuevaProvincia);
-        return provincias.toArray(new String[provincias.size()]);
+        return provincias.toArray(String[]::new);
     }
 
     public String[] eliminarProvincia(String provinciaParaEliminar) {
@@ -80,7 +79,7 @@ public class Modelo {
     }
     public String[] addProfesion(String nuevaProfesion) {
         profesiones.add(nuevaProfesion);
-        return profesiones.toArray(new String[profesiones.size()]);
+        return profesiones.toArray(String[]::new);
     }
 
     public boolean eliminarProfesion(String profesionParaEliminar) {
@@ -93,7 +92,7 @@ public class Modelo {
 
     public String[] deleteProfesion(String profesionParaEliminar) {
         profesiones.remove(profesionParaEliminar);
-        return profesiones.toArray(new String[profesiones.size()]);
+        return profesiones.toArray(String[]::new);
     }
 
     public boolean existeTrabajador(String txtDNI) {
@@ -120,11 +119,11 @@ public class Modelo {
 
         // Agregar trabajadores de prueba
         trabajadores.add(new Trabajador("12345678A", "Juan", "Pérez", "Gómez", "Madrid", "Ingeniero"));
-        trabajadores.add(new Trabajador("87654321B", "María", "López", "Fernández", "Barcelona", "Médico"));
-        trabajadores.add(new Trabajador("11223344C", "Carlos", "Rodríguez", "Sánchez", "A Coruña", "Profesor"));
-        trabajadores.add(new Trabajador("22334455D", "Laura", "González", "Martínez", "Lugo", "Abogado"));
+        trabajadores.add(new Trabajador("87654321B", "María", "López", "Fernández", "Ourense", "Médico"));
+        trabajadores.add(new Trabajador("11223344C", "Carlos", "Rodríguez", "Sánchez", "Ourense", "Profesor"));
+        trabajadores.add(new Trabajador("22334455D", "Laura", "González", "Martínez", "Ourense", "Abogado"));
         trabajadores.add(new Trabajador("33445566E", "Pedro", "Fernández", "Pérez", "Ourense", "Carpintero"));
-        trabajadores.add(new Trabajador("44556677F", "Ana", "Gómez", "Rodríguez", "Pontevedra", "Electricista"));
+        trabajadores.add(new Trabajador("44556677F", "Ana", "Gómez", "Rodríguez", "Ourense", "Electricista"));
     }
 
 }

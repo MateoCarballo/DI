@@ -21,5 +21,7 @@ public class Ejercicio12_Multixanela_DMI {
         controlador.setModelo(modelo);
         controlador.setVentanaPrincipal(ventanaPrincipal);
         modelo.setController(controlador);
+        
+       
     }
 }

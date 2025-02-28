@@ -2,23 +2,39 @@ package com.mycompany.ejercicio12_multixanela_dmi.controlador;
 
 
 import com.mycompany.ejercicio12_multixanela_dmi.modelo.Modelo;
-import com.mycompany.ejercicio12_multixanela_dmi.vista.InternalFrameTraballadores;
+import com.mycompany.ejercicio12_multixanela_dmi.modelo.Trabajador;
+import com.mycompany.ejercicio12_multixanela_dmi.vista.InternalFrameAltaTraballador;
+import com.mycompany.ejercicio12_multixanela_dmi.vista.InternalFrameProfesiones;
+import com.mycompany.ejercicio12_multixanela_dmi.vista.InternalFrameProvincias;
+import com.mycompany.ejercicio12_multixanela_dmi.vista.InternalFrameTraballadoresDispoñibles;
 import com.mycompany.ejercicio12_multixanela_dmi.vista.VentanaContenedora;
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Objects;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class Controlador implements ActionListener {
+   
     private VentanaContenedora ventanaContendora;
+    private InternalFrameAltaTraballador frameAltaTraballador;
+    private InternalFrameProfesiones frameProfesiones;
+    private InternalFrameProvincias frameProvincias;
+    private InternalFrameTraballadoresDispoñibles frameTraballadoresDispoñibles;
+   
     private Modelo modelo;
 
-    public Controlador( ) {
-
+    public Controlador() {
+        
     }
 
     public void setVentanaPrincipal(VentanaContenedora ventanaContendora) {
         this.ventanaContendora = ventanaContendora;
+        this.ventanaContendora.setVisible(true);
     }
 
     public Modelo getModelo() {
@@ -27,26 +43,69 @@ public class Controlador implements ActionListener {
 
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
+        modelo.cargarDatosDePrueba();
     }
 
     // Instanciar las nuevas ventanas
     public void abrirVentanaProvincias() {
-      ventanaProvincias = new VentanaProvincias(this);
+        this.frameProvincias = new InternalFrameProvincias(this);
+        this.ventanaContendora.getjDesktopPane1().add(frameProvincias);
+        DefaultComboBoxModel<String> datos = new DefaultComboBoxModel<>();
+
+        // Llenar el modelo con los elementos del ArrayList
+        for (String opcion : modelo.getProvincias()) {
+            datos.addElement(opcion);
+        }
+        frameProvincias.getjComboBox1().setModel(datos);
+        frameProvincias.setVisible(true);
     }
 
     public void abrirVentanaProfesiones() {
-        ventanaProfesiones = new VentanaProfesiones(this);
+        frameProfesiones = new InternalFrameProfesiones(this);
+        
+        this.ventanaContendora.getjDesktopPane1().add(frameProfesiones);
+        frameProfesiones.setVisible(true);
     }
 
     public void abrirVentanaAltaTrabajador() {
-        ventanaContendora.getjDesktopPane1().add(new InternalFrameTraballadores());
-                
+        frameAltaTraballador = new InternalFrameAltaTraballador(this);
+        DefaultComboBoxModel<String> datosProvincias = new DefaultComboBoxModel<>();
+
+        // Llenar el modelo con los elementos del ArrayList
+        for (String opcion : modelo.getProvincias()) {
+            datosProvincias.addElement(opcion);
+        }
+        
+        DefaultComboBoxModel<String> datosProfesiones = new DefaultComboBoxModel<>();
+
+        // Llenar el modelo con los elementos del ArrayList
+        for (String opcion : modelo.getProvincias()) {
+            datosProfesiones.addElement(opcion);
+        }
+        frameAltaTraballador.getjComboBox1().setModel(datosProvincias);
+        frameAltaTraballador.getjList1().setModel(datosProfesiones);
+        this.ventanaContendora.getjDesktopPane1().add(frameAltaTraballador);
+        frameAltaTraballador.setVisible(true);   
     }
 
+    @SuppressWarnings("empty-statement")
     public void abrirVentanaTrabajadoresDisponibles() {
-        ventanaTrabajadoresDisponibles = new VentanaTrabajadoresDisponibles(this,modelo.getTrabajadores());
+        frameTraballadoresDispoñibles = new InternalFrameTraballadoresDispoñibles(this);
+        
+        DefaultTableModel tModel = new DefaultTableModel();
+        tModel.addColumn("Nombre");
+        tModel.addColumn("Provincia");
+        tModel.addColumn("Profesion");
+        for(Trabajador t : modelo.getTrabajadores()){
+            String[] fila = {t.getNombre() + " " + t.getApellido1() + " " + t.getApellido2(),t.getProvincia(),t.getProfesion()};
+            tModel.addRow(fila);
+        }
+        frameTraballadoresDispoñibles.getjTable1().setModel(tModel);
+        this.ventanaContendora.getjDesktopPane1().add(frameTraballadoresDispoñibles);
+        frameTraballadoresDispoñibles.setVisible(true); 
     }
 
+    
     public String[] obtenerProfesiones() {
         return modelo.getProfesiones().toArray(new String[ modelo.getProfesiones().size()]);
     }
@@ -68,7 +127,8 @@ public class Controlador implements ActionListener {
     }
 
     private void actualizarValoresTextAreaProfesiones(String[] profesiones) {
-        ventanaProfesiones.getTextArea().setText(convertirArrayHaciaString(profesiones));
+        frameProfesiones.getjList1().setModel(new DefaultComboBoxModel<>(profesiones));
+                //.getTextArea().setText(convertirArrayHaciaString(profesiones));
     }
 
     public String convertirArrayHaciaString( String[] datos) {
@@ -90,6 +150,7 @@ public class Controlador implements ActionListener {
             JOptionPane.showMessageDialog(null, "Provincia ya existente");
         }
     }
+  
 
     public void eliminarProvincia(String provinciaParaEliminar){
         //TODO si algun trabajor es de la provincia no puede eliminarse
@@ -101,7 +162,7 @@ public class Controlador implements ActionListener {
     }
 
     public void actualizarValoresComboBoxProvincias(String[] nuevaListaProvincias){
-        ventanaProvincias.getComboProvincias().setModel(new DefaultComboBoxModel<>(nuevaListaProvincias));
+        frameProvincias.getjComboBox1().setModel(new DefaultComboBoxModel<>(nuevaListaProvincias));
     }
 
     private void agregarTraballador(
@@ -113,7 +174,7 @@ public class Controlador implements ActionListener {
             String provincia) {
         if(!modelo.existeTrabajador(txtDNI)) modelo.agregarTrabajador(txtNome,txtApelido1,txtApelido2,txtDNI,profesion,provincia);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();  // Obtiene el comando del botón
@@ -122,78 +183,66 @@ public class Controlador implements ActionListener {
             case "PROFESIONES" -> abrirVentanaProfesiones();
             case "ALTA_TRABAJADOR" -> abrirVentanaAltaTrabajador();
             case "VER_TRABAJADORES" -> abrirVentanaTrabajadoresDisponibles();
-            case "AGREGAR_PROVINCIA" -> agregarProvincia(ventanaProvincias.getTxtNueva().getText());
-            case "ELIMINAR_PROVINCIA" -> eliminarProvincia(ventanaProvincias.getComboProvincias().getSelectedItem().toString());
-            case "AGREGAR_PROFESION" -> agregarProfesion(ventanaProfesiones.getTxtField().getText());
-            case "ELIMINAR_PROFESION" -> eliminarProfesion(ventanaProfesiones.getTxtField().getText());
+            case "AGREGAR_PROVINCIA" -> agregarProvincia(frameProvincias.getjTextField1().getText());
+            case "ELIMINAR_PROVINCIA" -> eliminarProvincia(frameProvincias.getjComboBox1().getSelectedItem().toString());
+            case "AGREGAR_PROFESION" -> agregarProfesion(frameProfesiones.getjTextField1().getText());
+            case "ELIMINAR_PROFESION" -> eliminarProfesion(frameProfesiones.getjTextField1().getText());
             case "ALTA_TRABALLADOR" -> agregarTraballador(
-                        ventanaAltaTrabajador.getTxtNome().getText(),
-                        ventanaAltaTrabajador.getTxtApelido1().getText(),
-                        ventanaAltaTrabajador.getTxtApelido2().getText(),
-                        ventanaAltaTrabajador.getTxtDNI().getText(),
-                        Objects.requireNonNull(ventanaAltaTrabajador.getComboProvincia().getSelectedItem()).toString(),
-                        ventanaAltaTrabajador.getListaProfesion().getSelectedValue());
+                        frameAltaTraballador.getjTextField1().getText(),
+                        frameAltaTraballador.getjTextField2().getText(),
+                        frameAltaTraballador.getjTextField3().getText(),
+                        frameAltaTraballador.getjTextField4().getText(),
+                        Objects.requireNonNull(frameAltaTraballador.getjComboBox1().getSelectedItem()).toString(),
+                        frameAltaTraballador.getjList1().getSelectedValue());
             default -> System.out.println("Acción desconocida: " + comando);
         }
     }
+/*
+    
+public void eliminarProvincia(String provincia) {
+    if (modelo.eliminarProvincia(provincia)) {
+        ventanaProvincias.actualizarProvincias();
+        actualizarVentanasTrabajador();
+    } else {
+        JOptionPane.showMessageDialog(null, "No se puede eliminar la provincia");
+    }
+}
 
+public void agregarProfesion(String profesion) {
+    if (modelo.agregarProfesion(profesion)) {
+        ventanaProfesiones.actualizarProfesiones();
+        actualizarVentanasTrabajador();
+    } else {
+        JOptionPane.showMessageDialog(null, "Profesión ya existente");
+    }
+}
 
+public void eliminarProfesion(String profesion) {
+    if (Empresa.eliminarProfesion(profesion)) {
+        ventanaProfesiones.actualizarProfesiones();
+        actualizarVentanasTrabajador();
+    } else {
+        JOptionPane.showMessageDialog(null, "No se puede eliminar la profesión");
+    }
+}
 
-    /**
-     *
-     *
-     *     public void agregarProvincia(String provincia) {
-     *         if (modelo.agregarProvincia(provincia)) {
-     *             ventanaProvincias.actualizarProvincias();
-     *             actualizarVentanasTrabajador();
-     *         } else {
-     *             JOptionPane.showMessageDialog(null, "Provincia ya existente");
-     *         }
-     *     }
-     *
-     *     public void eliminarProvincia(String provincia) {
-     *         if (modelo.eliminarProvincia(provincia)) {
-     *             ventanaProvincias.actualizarProvincias();
-     *             actualizarVentanasTrabajador();
-     *         } else {
-     *             JOptionPane.showMessageDialog(null, "No se puede eliminar la provincia");
-     *         }
-     *     }
-     *
-     *     public void agregarProfesion(String profesion) {
-     *         if (modelo.agregarProfesion(profesion)) {
-     *             ventanaProfesiones.actualizarProfesiones();
-     *             actualizarVentanasTrabajador();
-     *         } else {
-     *             JOptionPane.showMessageDialog(null, "Profesión ya existente");
-     *         }
-     *     }
-     *
-     *     public void eliminarProfesion(String profesion) {
-     *         if (Empresa.eliminarProfesion(profesion)) {
-     *             ventanaProfesiones.actualizarProfesiones();
-     *             actualizarVentanasTrabajador();
-     *         } else {
-     *             JOptionPane.showMessageDialog(null, "No se puede eliminar la profesión");
-     *         }
-     *     }
-     *
-     *     public void registrarTrabajador(String dni, String nombre, String provincia, String profesion) {
-     *         if (Empresa.agregarTrabajador(new Trabajador(dni, nombre, provincia, profesion))) {
-     *             JOptionPane.showMessageDialog(null, "Trabajador registrado");
-     *             if (ventanaTrabajadoresDisponibles != null) {
-     *                 ventanaTrabajadoresDisponibles.actualizarLista();
-     *             }
-     *         } else {
-     *             JOptionPane.showMessageDialog(null, "Error al registrar trabajador. DNI duplicado.");
-     *         }
-     *     }
-     *
-     *     private void actualizarVentanasTrabajador() {
-     *         if (ventanaAltaTrabajador != null) {
-     *             ventanaAltaTrabajador.actualizarProvinciasYProfesiones();
-     *         }
-     *     }
-     */
+public void registrarTrabajador(String dni, String nombre, String provincia, String profesion) {
+    if (Empresa.agregarTrabajador(new Trabajador(dni, nombre, provincia, profesion))) {
+        JOptionPane.showMessageDialog(null, "Trabajador registrado");
+        if (ventanaTrabajadoresDisponibles != null) {
+            ventanaTrabajadoresDisponibles.actualizarLista();
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Error al registrar trabajador. DNI duplicado.");
+    }
+}
+
+private void actualizarVentanasTrabajador() {
+    if (ventanaAltaTrabajador != null) {
+        ventanaAltaTrabajador.actualizarProvinciasYProfesiones();
+    }
+}
+    */
+
 }
 
