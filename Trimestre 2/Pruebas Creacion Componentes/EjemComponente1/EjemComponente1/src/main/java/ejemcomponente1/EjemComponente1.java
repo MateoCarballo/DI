@@ -19,7 +19,6 @@ public class EjemComponente1 extends JPanel {
     private JLabel lblInfo;
 
     public EjemComponente1() {
-
         initComponents();
     }
 //métodos setter del panel
