@@ -2,16 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.example.aplicacion.pruebatemp2;
+package com.example.aplicacion.projectwithmateobutton;
 
 /**
  *
  * @author a22mateoca
  */
-public class PruebaTemp2 {
+public class ProjectWithMateoButton {
 
     public static void main(String[] args) {
-        FramePrincipal fp = new FramePrincipal();
-        fp.setVisible(true);
+        System.out.println("Hello World!");
     }
 }

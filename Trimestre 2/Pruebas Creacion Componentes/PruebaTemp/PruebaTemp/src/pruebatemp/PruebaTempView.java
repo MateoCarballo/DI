@@ -4,7 +4,7 @@
 
 package pruebatemp;
 
-import Temporizador.TemporizadorBean.FinCuentaAtrasEvent;
+
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -17,7 +17,7 @@ import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import Temporizador.TemporizadorBean.FinCuentaAtrasListener;
+
 
 /**
  * The application's main frame.
