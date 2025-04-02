@@ -199,18 +199,12 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // 7. Confirmación (Sí/No/Cancelar)
+         // 7. Confirmación (Sí/No/Cancelar)
         int opcion = JOptionPane.showConfirmDialog(null, "Elige una opción", "Opciones", JOptionPane.YES_NO_CANCEL_OPTION);
         switch (opcion) {
-            case JOptionPane.YES_OPTION:
-                System.out.println("El usuario eligió Sí");
-                break;
-            case JOptionPane.NO_OPTION:
-                System.out.println("El usuario eligió No");
-                break;
-            case JOptionPane.CANCEL_OPTION:
-                System.out.println("El usuario canceló");
-                break;
+            case JOptionPane.YES_OPTION -> System.out.println("El usuario eligió Sí");
+            case JOptionPane.NO_OPTION -> System.out.println("El usuario eligió No");
+            case JOptionPane.CANCEL_OPTION -> System.out.println("El usuario canceló");
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 

@@ -10,7 +10,5 @@ package com.mycompany.preparacionexamen;
  */
 public class PreparacionExamen {
 
-    public static void main(String[] args) {
-        
-    }
+    
 }
