@@ -93,6 +93,7 @@ public class View extends javax.swing.JFrame {
         jLabelAltoCm.setText("(cm)");
 
         jButtonEngadir.setText("Engadir");
+        jButtonEngadir.setToolTipText("Patata");
         jButtonEngadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEngadirActionPerformed(evt);
