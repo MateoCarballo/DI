@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Tabla_MVC;
+package MVC_ComboBox;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,18 +45,15 @@ public class Controlador implements ActionListener {
                 if (vista.getjTextField1().getText().isBlank() || vista.getjTextField1().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Se ha producido un error", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    String[] nuevaFila = {vista.getjTextField1().getText(),
-                        vista.getjTextField2().getText(),
-                        vista.getjTextField3().getText(),
-                        vista.getjTextField4().getText()};
-                    modelo.añadirElemnto(nuevaFila);
-                    vista.getjTable1().setModel(modelo.getDatosListaTabla());
+                    String nuevoItem = vista.getjTextField1().getText();
+                    modelo.añadirElemnto(nuevoItem);
+                    vista.getjComboBox1().setModel(modelo.getDatosListaTabla());
                 }
             }
             case "Boton Eliminar Pulsado" -> {
-               int indiceFila = vista.getjTable1().getSelectedRow();
-               modelo.borraElementoPorIndice(indiceFila);
-               vista.getjTable1().setModel(modelo.getDatosListaTabla());
+               int indiceComboBox = vista.getjComboBox1().getSelectedIndex();
+               modelo.borraElementoPorIndice(indiceComboBox);
+               vista.getjComboBox1().setModel(modelo.getDatosListaTabla());
             }
         }
     }

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Tabla_MVC;
+package MVC_ComboBox;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,12 +13,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Modelo {
 
-    private final String[] encabezado = {"Columna 1", "Columna 2", "Columna 3", "Columna 4"};
     private Controlador controlador;
-    private DefaultTableModel datosListaTabla;
+    private DefaultComboBoxModel datosComboBox;
 
     public Modelo() {
-        datosListaTabla = new DefaultTableModel(encabezado, 0);
+        datosComboBox = new DefaultComboBoxModel();
     }
 
     public Controlador getControlador() {
@@ -29,8 +28,8 @@ public class Modelo {
         this.controlador = controlador;
     }
 
-    public void añadirElemnto(String[] s) {
-        datosListaTabla.addRow(s);
+    public void añadirElemnto(String s) {
+        datosComboBox.addElement(s);
     }
 
     public void borraElementoPorIndice(int indiceParaBorrar) {
@@ -38,18 +37,18 @@ public class Modelo {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Quieres eliminar toda la lista?", "Confirmación", JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
                 System.out.println("Has borrado toda la lista ");
-                datosListaTabla = new DefaultTableModel(encabezado, 0);
+                datosComboBox = new DefaultComboBoxModel();
                 return;
             } else {
                 return;
             }
 
         }
-        datosListaTabla.removeRow(indiceParaBorrar);
+        datosComboBox.removeElementAt(indiceParaBorrar);
     }
 
-    public DefaultTableModel getDatosListaTabla() {
-        return datosListaTabla;
+    public DefaultComboBoxModel getDatosListaTabla() {
+        return datosComboBox;
     }
 
     /*
