@@ -4,7 +4,6 @@
  */
 package MVC;
 
-import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -12,20 +11,11 @@ import javax.swing.DefaultListModel;
  * @author Mateo
  */
 public class Modelo {
-
-    private Controlador controlador;
+    
     private DefaultListModel<String> datosLista;
 
     public Modelo() {
         datosLista = new DefaultListModel<>();
-    }
-    
-    public Controlador getControlador() {
-        return controlador;
-    }
-
-    public void setControlador(Controlador controlador) {
-        this.controlador = controlador;
     }
 
     public void  añadirElemnto(String s) {

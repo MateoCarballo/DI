@@ -51,14 +51,6 @@ public class Vista extends javax.swing.JFrame {
     public static DefaultListModel<String> getListModel() {
         return listModel;
     }
-    
-    
-    
-    
-    
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,6 +69,11 @@ public class Vista extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setText("jTextField1");
 
@@ -117,6 +114,10 @@ public class Vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -148,7 +149,6 @@ public class Vista extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             Vista v = new Vista();
             v.setVisible(true);
-            model.setControlador(controller);
             controller.setModelo(model);
             controller.setVista(v);
         });
