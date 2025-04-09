@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextField;
@@ -92,6 +93,7 @@ public class View extends javax.swing.JFrame {
         jLabelAltoCm.setText("(cm)");
 
         jButtonEngadir.setText("Engadir");
+        jButtonEngadir.setToolTipText("Patata");
         jButtonEngadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEngadirActionPerformed(evt);
@@ -329,6 +331,13 @@ public class View extends javax.swing.JFrame {
         jButtonEliminarTodas.setActionCommand("eliminarTodas");
         jButtonEliminarAlfombra.setActionCommand("eliminarAlfombra");
         jButtonInformacion.setActionCommand("mostrasInformacion");   
+    }
+    
+    public void agregarListener(ActionListener controlador){
+        this.jButtonEngadir.addActionListener(controlador);
+        this.jButtonInformacion.addActionListener(controlador);
+        this.jButtonEliminarAlfombra.addActionListener(controlador);
+        this.jButtonEliminarTodas.addActionListener(controlador);
     }
 
     //Getters de los botones para codificar cada accion para el escuchador ( clase controller )

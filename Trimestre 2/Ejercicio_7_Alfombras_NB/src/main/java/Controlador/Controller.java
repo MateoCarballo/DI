@@ -20,12 +20,9 @@ public class Controller implements ActionListener{
     private final Model model;
     
     public Controller(View view,Model model){
-        this.view = view;
-        this.model = model;
-        this.view.getjButtonEngadir().addActionListener(this);
-        this.view.getjButtonInformacion().addActionListener(this);
-        this.view.getjButtonEliminarAlfombra().addActionListener(this);
-        this.view.getjButtonEliminarTodas().addActionListener(this);
+       this.view = view;
+       this.model = model;
+       this.view.agregarListener(this);
         
     }
     
