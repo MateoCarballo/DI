@@ -1,0 +1,43 @@
+Teoria:
+
+En la plataforma: Exame_2ªAVAL_DI_DAM
+
+
+
+Práctica:
+
+Realizar un proyecto en NetBeans donde:
+
+Se pide realizar un proyecto de la gestión de una filmoteca en donde se almacenará las películas con los siguientes campos:
+
+codPeli, titulo, año del film, director, género y sinopsis, fecha de inserción.
+
+La vista de la aplicación se realizara por DMI(aplicación en una ventana con escritorio y menú).
+
+Características técnicas:
+
+Desde el menú se gestionará la aplicación y deberá incluir opciones de salir, información de la apliación y ayuda.
+Se podrá gestionar los directores, géneros y películas.
+
+El género se mostrará el un jlist.
+
+El director en un comboBox
+
+Los films se podrán visualizar en una tabla con todos sus datos salvo su sinopsis, que se podrá visualizar en una ventana de más informácion de la película, junto con el resto de la información.
+
+Podremos crear una lista personalizada de nuestras películas preferidas , guardarlas en un fichero y visualizarlas por pantalla, ya sea desde el fichero o desde la aplicación.
+Añadiremos un componente personalizado en nuestro escritorio, nuevo y ya creado con anterioridad.
+Puntos a tener en cuenta:
+Tratar de separar la vista, los datos y los eventos,MVC (Modelo, Vista, Controlador).
+Utilizar la mayoria de los componentes vistos:JLabel, Jbutton, Menus, Jlist, JcomboBox,Jtable, JToolBar
+Renombrar los componentes.
+Añadir toolTipText en los componentes.
+Comentar el código claramente.
+Añadir nombre del alumno en los títulos de los frame y en los archivos del proyecto. Nombre y apellido.
+Diseño homogeneo, claro y espaciado.
+Se valorará el uso de imágenes apropiadas en el proyecto.
+Indicaciones de entrega:
+
+Formatear código, limpiar y construir antes de exportar.
+Nombre del proyecto: “EX2_NombreApellido”
+La entrega se realizará del proyecto probado y se comprime en .zip con el nombre Ex2_NombreApellido” con la extensión correspondiente. No se corrige formatos .rar ni .7z

@@ -41,7 +41,7 @@ public class EjemComponente1 extends JPanel {
         JLabel mensajeError = new JLabel("Mensaje de error");
         JLabel mensajeInfo = new JLabel("Mensaje de información");
 
-        //   setBackground(new Color(235, 161, 52));
+        //setBackground(new Color(235, 161, 52));
         setLayout(new GridLayout(1, 4));
 
         //añado los componentes del panel

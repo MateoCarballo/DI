@@ -10,13 +10,10 @@ import com.mycompany.ejercicio12_multixanela_dmi.vista.InternalFrameTraballadore
 import com.mycompany.ejercicio12_multixanela_dmi.vista.VentanaContenedora;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.Objects;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class Controlador implements ActionListener {
    
