@@ -1,0 +1,64 @@
+🧠 ¿Qué es la usabilidad?
+La usabilidad es lo fácil, cómodo y rápido que resulta usar una interfaz, como una página web o una app.
+
+Es como preguntarse:
+
+¿Es fácil de entender? ¿Puedo usarlo sin confundirme? ¿Consigo lo que quiero sin frustrarme?
+
+🧩 5 conceptos clave de la usabilidad (con ejemplos simples)
+Facilidad de aprendizaje
+
+¿Una persona puede aprender a usarlo sin ayuda?
+
+🧪 Ejemplo: Abres una app de cámara y en 5 segundos ya sabes cómo tomar una foto. Eso es buena usabilidad.
+
+Eficiencia
+
+¿Puedo hacer tareas rápidamente una vez que sé usarlo?
+
+⚡ Ejemplo: En una app de delivery, hacer un pedido en 3 pasos sin perder tiempo buscando botones.
+
+Memorabilidad
+
+¿Lo recordaré si dejo de usarlo por un tiempo?
+
+🧠 Ejemplo: Usas una app de banco hoy y dentro de 2 semanas te acuerdas cómo transferir dinero porque el proceso era lógico.
+
+Bajo índice de errores
+
+¿Evita que cometa errores? ¿Y si cometo uno, es fácil arreglarlo?
+
+❌ Ejemplo: Si intentas borrar un archivo y te sale un mensaje: “¿Estás seguro?”, te ayuda a evitar un error.
+
+Satisfacción
+
+¿Me gusta usarlo? ¿Me deja una buena sensación?
+
+😊 Ejemplo: Una app con diseño limpio, botones grandes y colores agradables hace que disfrutes usarla.
+
+💡 Resumen visual con un ejemplo:
+Buena usabilidad:
+Una app de mapas que te muestra:
+
+Un campo para escribir destino (claro).
+
+Sugerencias automáticas (rápido).
+
+Botón grande para “Iniciar ruta” (fácil de encontrar).
+
+Voz que te guía (evita errores).
+
+Y al final piensas: “¡Qué fácil fue llegar!”
+
+Mala usabilidad:
+Una página de contacto donde:
+
+No encuentras el botón de “Enviar”.
+
+Tienes que llenar 10 campos obligatorios.
+
+No te avisa si el mensaje se envió.
+
+Te frustra y te vas.
+
+Si quieres, puedo mostrarte ejemplos reales o ayudarte a evaluar la usabilidad de una app o web que estés creando o usando. ¿Te gustaría eso? 😄

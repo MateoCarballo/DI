@@ -1,0 +1,49 @@
+🧩 1. Visibilidad del estado del sistema
+El sistema debe mantener informado al usuario sobre lo que está pasando.
+
+📌 Ejemplo: Cuando cargas un video en YouTube, aparece un ícono girando o una barra de progreso. Así sabes que algo está pasando.
+
+🌍 2. Correspondencia entre el sistema y el mundo real
+Usa palabras, frases y conceptos que la gente conoce. Los íconos e interacciones deben parecer “naturales”.
+
+📌 Ejemplo: Un ícono de sobre ✉️ para representar un mensaje. Todos lo entienden sin pensar.
+
+💼 3. Control y libertad del usuario
+Permite deshacer acciones fácilmente o salir de situaciones sin quedar atrapado.
+
+📌 Ejemplo: Botón de “Cancelar” al llenar un formulario, o "Atrás" para volver sin perder todo.
+
+⚠️ 4. Consistencia y estándares
+Usa elementos familiares y coherentes. No reinventes lo que ya funciona.
+
+📌 Ejemplo: Si en la mayoría de apps el ícono de configuración es ⚙️, no uses uno diferente que confunda.
+
+❌ 5. Prevención de errores
+Mejor evitar errores antes que tener que corregirlos.
+
+📌 Ejemplo: Si en un formulario el campo “email” está mal escrito, te avisa antes de enviarlo.
+
+👁️ 6. Reconocer mejor que recordar
+Muestra opciones visibles. No hagas que el usuario tenga que recordar cosas de una parte a otra.
+
+📌 Ejemplo: Un menú con íconos y nombres, en vez de pedirle al usuario que escriba comandos.
+
+🧰 7. Flexibilidad y eficiencia
+Permite atajos para usuarios expertos, sin complicar a los nuevos.
+
+📌 Ejemplo: En Gmail puedes hacer clic para archivar, pero también usar el atajo de teclado "E".
+
+📐 8. Diseño estético y minimalista
+No pongas información irrelevante. Menos es más.
+
+📌 Ejemplo: Una app de clima que muestra solo lo necesario: temperatura, pronóstico y lluvia. Nada de banners locos.
+
+🔍 9. Ayuda a reconocer, diagnosticar y corregir errores
+Si algo sale mal, el mensaje debe decir qué pasó y cómo solucionarlo.
+
+📌 Ejemplo: “Contraseña incorrecta. Debe tener al menos 8 caracteres.” → Eso ayuda. No solo “Error 34”.
+
+📘 10. Ayuda y documentación
+Aunque lo ideal es que no se necesite ayuda… debe haber una guía clara si alguien la busca.
+
+📌 Ejemplo: Un botón “¿Necesitas ayuda?” que abre preguntas frecuentes o un tutorial básico.
