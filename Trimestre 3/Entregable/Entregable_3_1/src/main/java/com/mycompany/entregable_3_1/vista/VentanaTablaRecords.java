@@ -29,6 +29,7 @@ public class VentanaTablaRecords extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setClosable(true);
         setTitle("Tabla de records");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

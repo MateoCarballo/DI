@@ -28,6 +28,7 @@ public class VentanaCreditos extends javax.swing.JInternalFrame {
 
         jLabelAgradecimientos = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Creditos");
 
         jLabelAgradecimientos.setText("<html>Este juego es una tarea entregable de la materia de desarrolo de interfaces desarrollada por Mateo Carballo y Luis <br/> En ella presentamos un juego de memoria para demostrar los conocimientos adquiridos en la materia. <br/> Para esto usaremos varios internal frames para cada una de las funcionalidades. Los usuarios de la app deberan registrarse a traves de un formulario.<br/> Una vez registrados deberán introducir sus credenciales para acceder al juego y poder guardar así sus registros<br/> Si quieres profundizar mas en detalle sobre como jugar ve a la sección de ayuda en ella encontrás un apartado explicando en que consiste el juego</html>");

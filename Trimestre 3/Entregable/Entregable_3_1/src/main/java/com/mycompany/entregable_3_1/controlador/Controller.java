@@ -1,123 +1,115 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.entregable_3_1.controlador;
 
-import com.mycompany.entregable_3_1.vista.VentanaCreditos;
-import com.mycompany.entregable_3_1.vista.VentanaInicioSesion;
-import com.mycompany.entregable_3_1.vista.VentanaJuego;
-import com.mycompany.entregable_3_1.vista.VentanaPrincipal;
-import com.mycompany.entregable_3_1.vista.VentanaRegistro;
-import com.mycompany.entregable_3_1.vista.VentanaTablaRecords;
+import com.mycompany.entregable_3_1.vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JLabel;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
-/**
- *
- * @author mateo
- */
 public class Controller implements ActionListener {
 
-    Boolean algunaVentanaAbierta = false;
+    boolean algunaVentanaAbierta = false;
     VentanaPrincipal ventanaPpal;
     VentanaRegistro ventanaRegistro;
     VentanaInicioSesion ventanaInicioSesion;
     VentanaJuego ventanaJ;
-    VentanaTablaRecords VentanaRecords;
-    VentanaCreditos VentanaC;
+    VentanaTablaRecords ventanaRecords;
+    VentanaCreditos ventanaCreditos;
 
     public Controller() {
         ventanaPpal = new VentanaPrincipal(this);
         ventanaPpal.setVisible(true);
-        ventanaRegistro.addInternalFrameListener(new InternalFrameListener() {
-            @Override
-            public void internalFrameOpened(InternalFrameEvent e) {
-            }
-
-            @Override
-            public void internalFrameClosing(InternalFrameEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void internalFrameClosed(InternalFrameEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void internalFrameIconified(InternalFrameEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void internalFrameDeiconified(InternalFrameEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void internalFrameActivated(InternalFrameEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void internalFrameDeactivated(InternalFrameEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        });
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         String comando = e.getActionCommand();
 
-        //Recogemos que comando estamos recibiendo y instanciamos el internal frame que corresponda a cada boton.
-        //En primer lugar aseguramos que no este ya instanciada para solo poder tener una de cada tipo a la vez.
-        //Despues de esto la creamos y se la pasamos al frame principal
-        //solo haremos caso a cada una de las opciones del menu, cuando no tengamos ninguna ventana abierta
-        //TODO falta meter ventana de ayuda
+        // Solo permitir abrir ventana si no hay otra abierta
+        if (algunaVentanaAbierta) {
+            System.out.println("Ya hay una ventana abierta, cierra primero la actual.");
+            return;
+        }
+
+        ventanaPpal.deleteFirstMessage(); // (Imagino que esto limpia algún mensaje inicial)
+
         switch (comando) {
-            case "Inicio sesion" -> {
-                if (ventanaInicioSesion == null) {
-                    ventanaInicioSesion = new VentanaInicioSesion();
-                    ventanaPpal.deleteFirstMessage();
-                    ventanaInicioSesion.setVisible(true);
-                    ventanaPpal.getjDesktopPane1().add(ventanaInicioSesion);
-                }
-            }
-            case "Registro usuario" -> {
-                if (ventanaRegistro == null) {
-                    ventanaRegistro = new VentanaRegistro();
-                    ventanaPpal.deleteFirstMessage();
-                    ventanaRegistro.setVisible(true);
-                    ventanaPpal.getjDesktopPane1().add(ventanaRegistro);
-                }
-            }
-            case "Abrir juego" -> {
-                ventanaPpal.deleteFirstMessage();
-            }
-            case "Records" -> {
-                ventanaPpal.deleteFirstMessage();
-            }
-            case "Creditos" -> {
-                ventanaPpal.deleteFirstMessage();
-            }
-            case "Primeros pasos" -> {
-                ventanaPpal.deleteFirstMessage();
-            }
-            default ->
-                System.out.println("Acción desconocida: " + comando);
+            case "Inicio sesion" -> abrirVentanaInicioSesion();
+            case "Registro usuario" -> abrirVentanaRegistro();
+            case "Abrir juego" -> abrirVentanaJuego();
+            case "Records" -> abrirVentanaRecords();
+            case "Creditos" -> abrirVentanaCreditos();
+            case "Primeros pasos" -> abrirVentanaAyuda();
+            default -> System.out.println("Acción desconocida: " + comando);
         }
     }
 
-    public void setAlgunaVentanaAbierta(Boolean algunaVentanaAbierta) {
-        this.algunaVentanaAbierta = algunaVentanaAbierta;
+    private void abrirVentanaInicioSesion() {
+        ventanaInicioSesion = new VentanaInicioSesion();
+        agregarVentana(ventanaInicioSesion);
     }
 
-    
-    
+    private void abrirVentanaRegistro() {
+        ventanaRegistro = new VentanaRegistro();
+        agregarVentana(ventanaRegistro);
+    }
+
+    private void abrirVentanaJuego() {
+        ventanaJ = new VentanaJuego();
+        agregarVentana(ventanaJ);
+    }
+
+    private void abrirVentanaRecords() {
+        ventanaRecords = new VentanaTablaRecords();
+        agregarVentana(ventanaRecords);
+    }
+
+    private void abrirVentanaCreditos() {
+        ventanaCreditos = new VentanaCreditos();
+        agregarVentana(ventanaCreditos);
+    }
+
+    private void abrirVentanaAyuda() {
+        // Aquí iría tu ventana de ayuda si la tienes creada
+    }
+
+    private void agregarVentana(javax.swing.JInternalFrame ventana) {
+        ventana.setVisible(true);
+        ventanaPpal.getjDesktopPane1().add(ventana);
+        algunaVentanaAbierta = true;
+
+        ventana.addInternalFrameListener(new InternalFrameListener() {
+            @Override
+            public void internalFrameClosing(InternalFrameEvent e) { }
+
+            @Override
+            public void internalFrameClosed(InternalFrameEvent e) {
+                limpiarReferenciasVentanas();
+            }
+
+            @Override
+            public void internalFrameOpened(InternalFrameEvent e) { }
+
+            @Override
+            public void internalFrameIconified(InternalFrameEvent e) { }
+
+            @Override
+            public void internalFrameDeiconified(InternalFrameEvent e) { }
+
+            @Override
+            public void internalFrameActivated(InternalFrameEvent e) { }
+
+            @Override
+            public void internalFrameDeactivated(InternalFrameEvent e) { }
+        });
+    }
+
+    private void limpiarReferenciasVentanas() {
+        ventanaInicioSesion = null;
+        ventanaRegistro = null;
+        ventanaJ = null;
+        ventanaRecords = null;
+        ventanaCreditos = null;
+        algunaVentanaAbierta = false;
+    }
 }
