@@ -31,22 +31,21 @@ public class VentanaCreditos extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Creditos");
 
-        jLabelAgradecimientos.setText("<html>Este juego es una tarea entregable de la materia de desarrolo de interfaces desarrollada por Mateo Carballo y Luis <br/> En ella presentamos un juego de memoria para demostrar los conocimientos adquiridos en la materia. <br/> Para esto usaremos varios internal frames para cada una de las funcionalidades. Los usuarios de la app deberan registrarse a traves de un formulario.<br/> Una vez registrados deberán introducir sus credenciales para acceder al juego y poder guardar así sus registros<br/> Si quieres profundizar mas en detalle sobre como jugar ve a la sección de ayuda en ella encontrás un apartado explicando en que consiste el juego</html>");
+        jLabelAgradecimientos.setText("<html>\n    <div style='text-align: center;'>\n        <h2>Sobre el Proyecto</h2>\n        <p>\n            Este juego es una tarea entregable de la materia de Desarrollo de Interfaces,<br>\n            desarrollada por Mateo Carballo y Luis.\n        </p>\n        <p>\n            En ella presentamos un juego de memoria para demostrar los conocimientos adquiridos en la materia.<br>\n            Para esto utilizamos varios Internal Frames para cada una de las funcionalidades.\n        </p>\n        <p>\n            Los usuarios de la aplicación deberán registrarse a través de un formulario.<br>\n            Una vez registrados, deberán introducir sus credenciales para acceder al juego y poder guardar sus registros.\n        </p>\n        <p>\n            Si quieres profundizar más en cómo jugar,<br>\n            ve a la sección de Ayuda donde encontrarás una explicación detallada sobre el funcionamiento del juego.\n        </p>\n    </div>\n</html>\n");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelAgradecimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(180, 180, 180)
+                .addComponent(jLabelAgradecimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelAgradecimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .addComponent(jLabelAgradecimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

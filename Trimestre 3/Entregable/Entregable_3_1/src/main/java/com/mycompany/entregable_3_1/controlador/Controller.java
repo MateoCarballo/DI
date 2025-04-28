@@ -15,7 +15,8 @@ public class Controller implements ActionListener {
     VentanaJuego ventanaJ;
     VentanaTablaRecords ventanaRecords;
     VentanaCreditos ventanaCreditos;
-
+    VentanaPrimerosPasos ventanaPrimerosPasos;
+    
     public Controller() {
         ventanaPpal = new VentanaPrincipal(this);
         ventanaPpal.setVisible(true);
@@ -25,13 +26,14 @@ public class Controller implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
 
-        // Solo permitir abrir ventana si no hay otra abierta
+        //SI tenemos alguna ventana abierta no abre otra hata que se cierre, gestionado mas abajo con un listener del internal frame
+       
         if (algunaVentanaAbierta) {
             System.out.println("Ya hay una ventana abierta, cierra primero la actual.");
             return;
         }
 
-        ventanaPpal.deleteFirstMessage(); // (Imagino que esto limpia algún mensaje inicial)
+        ventanaPpal.deleteFirstMessage(); 
 
         switch (comando) {
             case "Inicio sesion" -> abrirVentanaInicioSesion();
@@ -70,10 +72,12 @@ public class Controller implements ActionListener {
     }
 
     private void abrirVentanaAyuda() {
-        // Aquí iría tu ventana de ayuda si la tienes creada
+        ventanaPrimerosPasos = new VentanaPrimerosPasos();
+        agregarVentana(ventanaPrimerosPasos);
     }
 
     private void agregarVentana(javax.swing.JInternalFrame ventana) {
+        //Aqui gestionamos el escuchador del internal frame de modo que si cerramos la ventana ejecute el metodo limpiarReferenciasVentanas para poder asi instanciar otro nuevo internal frame
         ventana.setVisible(true);
         ventanaPpal.getjDesktopPane1().add(ventana);
         algunaVentanaAbierta = true;
