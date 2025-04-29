@@ -4,17 +4,40 @@
  */
 package com.mycompany.entregable_3_1.vista;
 
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
 /**
  *
  * @author mateo
  */
 public class VentanaJuego extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Juego
-     */
+    private JButton[] botones;
+    private String[] imagenesDisponibles = {
+        "001.png", "002.png", "003.png", "004.png", "005.png", "006.png",
+        "007.png", "008.png", "009.png", "010.png", "011.png", "012.png"
+    };
+    private Map<JButton, String> mapaCartas;
+    private List<JButton> cartasSeleccionadas;
+    private ImageIcon interrogacionIcon;
+
+    private long tiempoInicio;
+
     public VentanaJuego() {
         initComponents();
+        prepararInterfaz();
     }
 
     /**
@@ -26,24 +49,324 @@ public class VentanaJuego extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonCarta1 = new javax.swing.JButton();
+        jButtonCarta2 = new javax.swing.JButton();
+        jButtonCarta3 = new javax.swing.JButton();
+        jButtonCarta4 = new javax.swing.JButton();
+        jButtonCarta5 = new javax.swing.JButton();
+        jButtonCarta6 = new javax.swing.JButton();
+        jButtonCarta7 = new javax.swing.JButton();
+        jButtonCarta8 = new javax.swing.JButton();
+        jButtonCarta9 = new javax.swing.JButton();
+        jButtonCarta10 = new javax.swing.JButton();
+        jButtonCarta11 = new javax.swing.JButton();
+        jButtonCarta12 = new javax.swing.JButton();
+        jButtonCarta13 = new javax.swing.JButton();
+        jButtonCarta14 = new javax.swing.JButton();
+        jButtonCarta15 = new javax.swing.JButton();
+        jButtonCarta16 = new javax.swing.JButton();
+        jButtonCarta17 = new javax.swing.JButton();
+        jButtonCarta18 = new javax.swing.JButton();
+        jButtonCarta19 = new javax.swing.JButton();
+        jButtonCarta20 = new javax.swing.JButton();
+        jButtonCarta21 = new javax.swing.JButton();
+        jButtonCarta22 = new javax.swing.JButton();
+        jButtonCarta23 = new javax.swing.JButton();
+        jButtonCarta24 = new javax.swing.JButton();
+        btnComenzar = new javax.swing.JButton();
+
         setClosable(true);
         setTitle("Juego de memoria");
+
+        btnComenzar.setText("Comenzar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonCarta19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta20, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta21, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta22, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta23, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonCarta13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta14, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta15, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta16, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta17, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCarta18, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButtonCarta7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta11, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButtonCarta1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonCarta6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(btnComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCarta1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCarta7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta11, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCarta13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta14, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta15, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta16, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta17, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta18, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCarta19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta20, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta21, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta22, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta23, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCarta24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void prepararInterfaz() {
+        botones = new JButton[]{
+            jButtonCarta1, jButtonCarta2, jButtonCarta3, jButtonCarta4, jButtonCarta5, jButtonCarta6,
+            jButtonCarta7, jButtonCarta8, jButtonCarta9, jButtonCarta10, jButtonCarta11, jButtonCarta12,
+            jButtonCarta13, jButtonCarta14, jButtonCarta15, jButtonCarta16, jButtonCarta17, jButtonCarta18,
+            jButtonCarta19, jButtonCarta20, jButtonCarta21, jButtonCarta22, jButtonCarta23, jButtonCarta24
+        };
+
+        interrogacionIcon = escalarImagen("/img/interrogacion.png", 100, 100); // Escalada
+
+        cartasSeleccionadas = new ArrayList<>();
+        mapaCartas = new HashMap<>();
+
+        btnComenzar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iniciarPartida();
+            }
+        });
+
+        for (JButton boton : botones) {
+            boton.setEnabled(false);
+            boton.setIcon(null);
+            boton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+            boton.setBackground(java.awt.Color.WHITE);
+            boton.setPreferredSize(new Dimension(100, 100));  // Asegúrate de que todos los botones tengan el mismo tamaño
+
+        }
+    }
+
+    private void iniciarPartida() {
+        cartasSeleccionadas.clear();
+        mapaCartas.clear();
+
+        List<String> imagenesParaJuego = new ArrayList<>();
+        for (String img : imagenesDisponibles) {
+            imagenesParaJuego.add(img);
+            imagenesParaJuego.add(img);
+        }
+        Collections.shuffle(imagenesParaJuego);
+
+        // Obtenemos el tamaño de los botones una sola vez, asumiendo que todos tienen el mismo tamaño
+        int anchoBoton = jButtonCarta1.getWidth();
+        int altoBoton = jButtonCarta1.getHeight();
+
+        for (int i = 0; i < botones.length; i++) {
+            JButton boton = botones[i];
+            String nombreImagen = imagenesParaJuego.get(i);
+            mapaCartas.put(boton, nombreImagen);
+
+            // Escalar la imagen antes de asignarla al botón
+            ImageIcon icono = escalarImagen("/img/" + nombreImagen, anchoBoton, altoBoton);
+            boton.setIcon(icono);
+            boton.setEnabled(false);
+        }
+
+        Timer mostrarYTapar = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (JButton boton : botones) {
+                    boton.setIcon(interrogacionIcon);
+                    boton.setEnabled(true);
+                    for (ActionListener al : boton.getActionListeners()) {
+                        boton.removeActionListener(al); // evitar duplicados
+                    }
+                    boton.addActionListener(new CartaClickListener());
+                }
+
+                tiempoInicio = System.currentTimeMillis();
+            }
+        });
+        mostrarYTapar.setRepeats(false);
+        mostrarYTapar.start();
+    }
+
+    private class CartaClickListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton botonPulsado = (JButton) e.getSource();
+
+            if (cartasSeleccionadas.contains(botonPulsado) || cartasSeleccionadas.size() >= 2) {
+                return;
+            }
+
+            String nombreImagen = mapaCartas.get(botonPulsado);
+            botonPulsado.setIcon(new ImageIcon(getClass().getResource("/img/" + nombreImagen)));
+            cartasSeleccionadas.add(botonPulsado);
+
+            if (cartasSeleccionadas.size() == 2) {
+                Timer timer = new Timer(1000, (ActionEvent e1) -> {
+                    comprobarPareja();
+                });
+                timer.setRepeats(false);
+                timer.start();
+            }
+        }
+    }
+
+    private ImageIcon escalarImagen(String ruta, int ancho, int alto) {
+        ImageIcon iconoOriginal = new ImageIcon(getClass().getResource(ruta));
+        java.awt.Image imagen = iconoOriginal.getImage().getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+        return new ImageIcon(imagen);
+    }
+
+    private void comprobarPareja() {
+        JButton carta1 = cartasSeleccionadas.get(0);
+        JButton carta2 = cartasSeleccionadas.get(1);
+
+        String img1 = mapaCartas.get(carta1);
+        String img2 = mapaCartas.get(carta2);
+
+        if (!img1.equals(img2)) {
+            carta1.setIcon(interrogacionIcon);
+            carta2.setIcon(interrogacionIcon);
+        } else {
+            carta1.setEnabled(false);
+            carta2.setEnabled(false);
+        }
+
+        cartasSeleccionadas.clear();
+
+        if (juegoTerminado()) {
+            long tiempoFinal = System.currentTimeMillis();
+            long segundos = (tiempoFinal - tiempoInicio) / 1000;
+
+            JOptionPane.showMessageDialog(this, "¡Has ganado! Tiempo: " + segundos + " segundos.");
+        }
+    }
+
+    private boolean juegoTerminado() {
+        for (JButton boton : botones) {
+            if (boton.isEnabled()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Método para ajustar el tamaño de las imágenes a las dimensiones de los botones
+    private ImageIcon redimensionarImagen(String rutaImagen) {
+        // Cargar la imagen
+        ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/img/" + rutaImagen));
+
+        // Obtener el tamaño del botón (suponiendo que los botones tienen el mismo tamaño)
+        int anchoBoton = jButtonCarta1.getWidth();  // O cualquier botón que tenga el tamaño correcto
+        int altoBoton = jButtonCarta1.getHeight();  // Lo mismo con la altura
+
+        // Redimensionar la imagen
+        Image imagen = iconoOriginal.getImage();
+        Image imagenRedimensionada = imagen.getScaledInstance(anchoBoton, altoBoton, Image.SCALE_SMOOTH);
+
+        return new ImageIcon(imagenRedimensionada);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnComenzar;
+    private javax.swing.JButton jButtonCarta1;
+    private javax.swing.JButton jButtonCarta10;
+    private javax.swing.JButton jButtonCarta11;
+    private javax.swing.JButton jButtonCarta12;
+    private javax.swing.JButton jButtonCarta13;
+    private javax.swing.JButton jButtonCarta14;
+    private javax.swing.JButton jButtonCarta15;
+    private javax.swing.JButton jButtonCarta16;
+    private javax.swing.JButton jButtonCarta17;
+    private javax.swing.JButton jButtonCarta18;
+    private javax.swing.JButton jButtonCarta19;
+    private javax.swing.JButton jButtonCarta2;
+    private javax.swing.JButton jButtonCarta20;
+    private javax.swing.JButton jButtonCarta21;
+    private javax.swing.JButton jButtonCarta22;
+    private javax.swing.JButton jButtonCarta23;
+    private javax.swing.JButton jButtonCarta24;
+    private javax.swing.JButton jButtonCarta3;
+    private javax.swing.JButton jButtonCarta4;
+    private javax.swing.JButton jButtonCarta5;
+    private javax.swing.JButton jButtonCarta6;
+    private javax.swing.JButton jButtonCarta7;
+    private javax.swing.JButton jButtonCarta8;
+    private javax.swing.JButton jButtonCarta9;
     // End of variables declaration//GEN-END:variables
 }

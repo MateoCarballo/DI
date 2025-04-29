@@ -3,6 +3,7 @@ package com.mycompany.entregable_3_1.controlador;
 import com.mycompany.entregable_3_1.vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
@@ -24,7 +25,20 @@ public class Controller implements ActionListener {
     
     public Controller() {
         ventanaPpal = new VentanaPrincipal(this);
+        centrarVentana(ventanaPpal);
         ventanaPpal.setVisible(true);
+    }
+    
+    public static void centrarVentana(JFrame ventana) {
+        // Obtener la resolución de la pantalla
+        java.awt.Dimension pantalla = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+
+        // Calcular la posición para centrar la ventana
+        int x = (pantalla.width - ventana.getWidth()) / 2;
+        int y = (pantalla.height - ventana.getHeight()) / 2;
+
+        // Establecer la posición de la ventana
+        ventana.setLocation(x, y);
     }
 
     

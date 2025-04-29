@@ -59,6 +59,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Entregable 3_1");
 
+        jLabelMensajeBienvenida.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelMensajeBienvenida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMensajeBienvenida.setText("<html><div style='text-align: center;'>Bienvenido al Juego de la Memoria!<br>En primer lugar debes registrarte para hacerlo pincha en el menú de arriba y selecciona registro.<br>Si ya estás registrado inicia sesión para guardar tus records.<br> ¡A GANAR!></html>");
         jLabelMensajeBienvenida.setToolTipText("Mensaje_Bienvenida");
@@ -69,17 +70,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(jLabelMensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(252, Short.MAX_VALUE)
+                .addComponent(jLabelMensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 858, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(246, 246, 246))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelMensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addGap(122, 122, 122)
+                .addComponent(jLabelMensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         jBarraMenuSuperior.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
