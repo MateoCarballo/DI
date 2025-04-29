@@ -13,13 +13,9 @@ public class Entregable_3_1 {
 
     public static void main(String[] args) {
         /*
-        Aqui debemos instanciar cada una de las partes:
-        
-            El controlador que recoge los eventos de las ventanas, 
-            de las que tiene constancia y el modelo que cotendra los 
-            metodos para obtener la informacion necesaria.
+        Esta clase la uso para instanciar el controlador desde el instanciare la
+        ventana principal, así como las internal frames dentro de ella.
          */
-        
         Controller controlador = new Controller();
     }
 }

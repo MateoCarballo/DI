@@ -7,7 +7,12 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
 public class Controller implements ActionListener {
-
+    
+    /*
+    Instancias de los internal frames y de la ventana contenedora. 
+    Tambien tenemos una variable booleana para evitar que se abra una ventana si 
+    existe una instancia de alguna o que se abra otra si existe una abierta.
+    */
     boolean algunaVentanaAbierta = false;
     VentanaPrincipal ventanaPpal;
     VentanaRegistro ventanaRegistro;
@@ -22,6 +27,10 @@ public class Controller implements ActionListener {
         ventanaPpal.setVisible(true);
     }
 
+    
+    /*
+    Aqui recogemos mediante comando que boton se pulsa dentro del menu y si existe alguna intancia ya no pasa por el switch
+    */
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
@@ -45,6 +54,10 @@ public class Controller implements ActionListener {
             default -> System.out.println("Acción desconocida: " + comando);
         }
     }
+    
+    /*
+    Metodos para abrir cada uno de los internal frames
+    */
 
     private void abrirVentanaInicioSesion() {
         ventanaInicioSesion = new VentanaInicioSesion();
@@ -75,6 +88,10 @@ public class Controller implements ActionListener {
         ventanaPrimerosPasos = new VentanaPrimerosPasos();
         agregarVentana(ventanaPrimerosPasos);
     }
+    
+    /*
+    Escuchador de los internal frame para gestionar el cierre y apertura si existe una ventana abierta
+    */
 
     private void agregarVentana(javax.swing.JInternalFrame ventana) {
         //Aqui gestionamos el escuchador del internal frame de modo que si cerramos la ventana ejecute el metodo limpiarReferenciasVentanas para poder asi instanciar otro nuevo internal frame
