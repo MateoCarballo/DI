@@ -2,20 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package com.mycompany.entregable_3_1.vista;
+package vista;
+
+import com.sun.java.accessibility.util.AWTEventMonitor;
 
 /**
  *
  * @author mateo
  */
-public class VentanaRegistro extends javax.swing.JInternalFrame {
+public class VentanaInicioSesion extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form VentanaRegistro
+     * Creates new form VentanaInicioSesion
      */
-    public VentanaRegistro() {
+    public VentanaInicioSesion() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,23 +31,22 @@ public class VentanaRegistro extends javax.swing.JInternalFrame {
 
         jTextFieldnombreUsuario = new javax.swing.JTextField();
         jTextFieldClaveUsuario = new javax.swing.JTextField();
-        jButtonRegistrar = new javax.swing.JButton();
+        jButtonInicioSesion = new javax.swing.JButton();
         jLabelUser = new javax.swing.JLabel();
         jLabelPassword = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelInicioSesion = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Registro");
-        setToolTipText("Ventana registro");
+        setTitle("Inicio Sesion");
 
         jTextFieldnombreUsuario.setToolTipText("jTextFiel del nombre del usuario");
 
         jTextFieldClaveUsuario.setToolTipText("jTextField de la clave del usuario");
 
-        jButtonRegistrar.setText("Registrar");
-        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInicioSesion.setText("Entrar");
+        jButtonInicioSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistrarActionPerformed(evt);
+                jButtonInicioSesionActionPerformed(evt);
             }
         });
 
@@ -52,9 +54,9 @@ public class VentanaRegistro extends javax.swing.JInternalFrame {
 
         jLabelPassword.setText("Contraseña");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Nuevo usuario");
-        jLabel1.setToolTipText("");
+        jLabelInicioSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabelInicioSesion.setText("Inicio Sesion");
+        jLabelInicioSesion.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,18 +69,17 @@ public class VentanaRegistro extends javax.swing.JInternalFrame {
                     .addComponent(jLabelPassword))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButtonRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldnombreUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldClaveUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabelInicioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonInicioSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldnombreUsuario)
+                    .addComponent(jTextFieldClaveUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldnombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -88,24 +89,25 @@ public class VentanaRegistro extends javax.swing.JInternalFrame {
                     .addComponent(jTextFieldClaveUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelPassword))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonRegistrar)
+                .addComponent(jButtonInicioSesion)
                 .addContainerGap(129, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+    private void jButtonInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioSesionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonRegistrarActionPerformed
+    }//GEN-LAST:event_jButtonInicioSesionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonRegistrar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonInicioSesion;
+    private javax.swing.JLabel jLabelInicioSesion;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JTextField jTextFieldClaveUsuario;
     private javax.swing.JTextField jTextFieldnombreUsuario;
     // End of variables declaration//GEN-END:variables
+
 }

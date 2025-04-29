@@ -1,15 +1,15 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package com.mycompany.entregable_3_1;
+package main;
 
-import com.mycompany.entregable_3_1.controlador.Controller;
+import controlador.Controller;
 
 /**
  *
  * @author mateo
  */
-public class Entregable_3_1 {
+public class Main {
 
     public static void main(String[] args) {
         /*

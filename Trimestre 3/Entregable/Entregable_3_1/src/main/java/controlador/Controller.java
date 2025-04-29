@@ -1,6 +1,12 @@
-package com.mycompany.entregable_3_1.controlador;
+package controlador;
 
-import com.mycompany.entregable_3_1.vista.*;
+import vista.VentanaPrimerosPasos;
+import vista.VentanaRegistro;
+import vista.VentanaTablaRecords;
+import vista.VentanaJuego;
+import vista.VentanaInicioSesion;
+import vista.VentanaCreditos;
+import vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;

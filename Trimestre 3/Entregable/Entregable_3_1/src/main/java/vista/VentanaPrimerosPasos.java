@@ -1,4 +1,4 @@
-package com.mycompany.entregable_3_1.vista;
+package vista;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
