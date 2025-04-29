@@ -9,5 +9,5 @@ package modelo;
  * @author Mateo
  */
 public class Modelo {
-    
+    //Aqui ira toda la logica del programa para que funcione el juego y todos los datos necesarios para la persistencia
 }
