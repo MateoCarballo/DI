@@ -1,43 +1,91 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package vista;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 
-/**
- *
- * @author mateo
- */
-public class VentanaJuego extends javax.swing.JInternalFrame {
+public final class VentanaJuego extends javax.swing.JInternalFrame {
+    // Cambiar tipo de interrogacionIcon a ImageIcon
 
-    private JButton[] botones;
-    private String[] imagenesDisponibles = {
-        "001.png", "002.png", "003.png", "004.png", "005.png", "006.png",
-        "007.png", "008.png", "009.png", "010.png", "011.png", "012.png"
-    };
-    private Map<JButton, String> mapaCartas;
-    private List<JButton> cartasSeleccionadas;
-    private ImageIcon interrogacionIcon;
-
-    private long tiempoInicio;
+    private final ImageIcon interrogacionIcon;
 
     public VentanaJuego() {
         initComponents();
-        prepararInterfaz();
+        configurarAparienciaInicial();
+        // Inicializar icono de interrogación
+        interrogacionIcon = escalarImagen("/img/interrogacion.png", 100, 100);
+    }
+
+    private void configurarAparienciaInicial() {
+    Color colorFondo = Color.WHITE;  // o Color.BLACK para fondo negro
+    Color colorBorde = Color.DARK_GRAY;
+    
+    for (JButton boton : getTodosLosBotones()) {
+        // Fondo blanco y borde gris oscuro
+        boton.setBackground(colorFondo);
+        boton.setBorder(BorderFactory.createLineBorder(colorBorde, 2));
+        boton.setPreferredSize(new Dimension(100, 100));
+        boton.setIcon(interrogacionIcon);
+        boton.setEnabled(false);
+        
+        // Opcional: eliminar efecto de enfoque
+        boton.setFocusPainted(false);
+    }
+    btnComenzar.setText("Iniciar Juego");
+}
+
+    public ImageIcon escalarImagen(String ruta, int ancho, int alto) {
+        ImageIcon iconoOriginal = new ImageIcon(getClass().getResource(ruta));
+        if (iconoOriginal.getImage() == null) {
+            throw new IllegalArgumentException("Imagen no encontrada: " + ruta);
+        }
+        Image imagen = iconoOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        return new ImageIcon(imagen);
+    }
+
+    // Métodos de acceso para el controlador (¡Estos son clave!)
+    public JButton getBotonComenzar() {
+        return btnComenzar;
+    }
+
+    public JButton[] getTodosLosBotones() {
+        return new JButton[]{
+            jButtonCarta1, jButtonCarta2, jButtonCarta3, jButtonCarta4,
+            jButtonCarta5, jButtonCarta6, jButtonCarta7, jButtonCarta8,
+            jButtonCarta9, jButtonCarta10, jButtonCarta11, jButtonCarta12,
+            jButtonCarta13, jButtonCarta14, jButtonCarta15, jButtonCarta16,
+            jButtonCarta17, jButtonCarta18, jButtonCarta19, jButtonCarta20,
+            jButtonCarta21, jButtonCarta22, jButtonCarta23, jButtonCarta24
+        };
+    }
+
+    // Métodos para manipulación visual desde el controlador
+    public void mostrarImagenEnBoton(JButton boton, ImageIcon imagen) {
+        boton.setIcon(imagen);
+    }
+
+    public void mostrarCarta(JButton boton, ImageIcon icono) {
+        boton.setIcon(icono);
+    }
+
+    public void habilitarCarta(JButton boton, boolean habilitar) {
+        boton.setEnabled(habilitar);
+        if (habilitar) {
+            boton.setIcon(interrogacionIcon);
+        }
+    }
+
+    public void resetearBoton(JButton boton, ImageIcon iconoInterrogacion) {
+        boton.setIcon(iconoInterrogacion);
+        boton.setEnabled(true);
+    }
+
+    public void mostrarMensajeFin(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**
@@ -185,162 +233,6 @@ public class VentanaJuego extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void prepararInterfaz() {
-        botones = new JButton[]{
-            jButtonCarta1, jButtonCarta2, jButtonCarta3, jButtonCarta4, jButtonCarta5, jButtonCarta6,
-            jButtonCarta7, jButtonCarta8, jButtonCarta9, jButtonCarta10, jButtonCarta11, jButtonCarta12,
-            jButtonCarta13, jButtonCarta14, jButtonCarta15, jButtonCarta16, jButtonCarta17, jButtonCarta18,
-            jButtonCarta19, jButtonCarta20, jButtonCarta21, jButtonCarta22, jButtonCarta23, jButtonCarta24
-        };
-
-        interrogacionIcon = escalarImagen("/img/interrogacion.png", 100, 100); // Escalada
-
-        cartasSeleccionadas = new ArrayList<>();
-        mapaCartas = new HashMap<>();
-
-        btnComenzar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                iniciarPartida();
-            }
-        });
-
-        for (JButton boton : botones) {
-            boton.setEnabled(false);
-            boton.setIcon(null);
-            boton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-            boton.setBackground(java.awt.Color.WHITE);
-            boton.setPreferredSize(new Dimension(100, 100));  // Asegúrate de que todos los botones tengan el mismo tamaño
-
-        }
-    }
-
-    private void iniciarPartida() {
-        cartasSeleccionadas.clear();
-        mapaCartas.clear();
-
-        List<String> imagenesParaJuego = new ArrayList<>();
-        for (String img : imagenesDisponibles) {
-            imagenesParaJuego.add(img);
-            imagenesParaJuego.add(img);
-        }
-        Collections.shuffle(imagenesParaJuego);
-
-        // Obtenemos el tamaño de los botones una sola vez, asumiendo que todos tienen el mismo tamaño
-        int anchoBoton = jButtonCarta1.getWidth();
-        int altoBoton = jButtonCarta1.getHeight();
-
-        for (int i = 0; i < botones.length; i++) {
-            JButton boton = botones[i];
-            String nombreImagen = imagenesParaJuego.get(i);
-            mapaCartas.put(boton, nombreImagen);
-
-            // Escalar la imagen antes de asignarla al botón
-            ImageIcon icono = escalarImagen("/img/" + nombreImagen, anchoBoton, altoBoton);
-            boton.setIcon(icono);
-            boton.setEnabled(false);
-        }
-
-        Timer mostrarYTapar = new Timer(2000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for (JButton boton : botones) {
-                    boton.setIcon(interrogacionIcon);
-                    boton.setEnabled(true);
-                    for (ActionListener al : boton.getActionListeners()) {
-                        boton.removeActionListener(al); // evitar duplicados
-                    }
-                    boton.addActionListener(new CartaClickListener());
-                }
-
-                tiempoInicio = System.currentTimeMillis();
-            }
-        });
-        mostrarYTapar.setRepeats(false);
-        mostrarYTapar.start();
-    }
-
-    private class CartaClickListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JButton botonPulsado = (JButton) e.getSource();
-
-            if (cartasSeleccionadas.contains(botonPulsado) || cartasSeleccionadas.size() >= 2) {
-                return;
-            }
-
-            String nombreImagen = mapaCartas.get(botonPulsado);
-            botonPulsado.setIcon(new ImageIcon(getClass().getResource("/img/" + nombreImagen)));
-            cartasSeleccionadas.add(botonPulsado);
-
-            if (cartasSeleccionadas.size() == 2) {
-                Timer timer = new Timer(1000, (ActionEvent e1) -> {
-                    comprobarPareja();
-                });
-                timer.setRepeats(false);
-                timer.start();
-            }
-        }
-    }
-
-    private ImageIcon escalarImagen(String ruta, int ancho, int alto) {
-        ImageIcon iconoOriginal = new ImageIcon(getClass().getResource(ruta));
-        java.awt.Image imagen = iconoOriginal.getImage().getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
-        return new ImageIcon(imagen);
-    }
-
-    private void comprobarPareja() {
-        JButton carta1 = cartasSeleccionadas.get(0);
-        JButton carta2 = cartasSeleccionadas.get(1);
-
-        String img1 = mapaCartas.get(carta1);
-        String img2 = mapaCartas.get(carta2);
-
-        if (!img1.equals(img2)) {
-            carta1.setIcon(interrogacionIcon);
-            carta2.setIcon(interrogacionIcon);
-        } else {
-            carta1.setEnabled(false);
-            carta2.setEnabled(false);
-        }
-
-        cartasSeleccionadas.clear();
-
-        if (juegoTerminado()) {
-            long tiempoFinal = System.currentTimeMillis();
-            long segundos = (tiempoFinal - tiempoInicio) / 1000;
-
-            JOptionPane.showMessageDialog(this, "¡Has ganado! Tiempo: " + segundos + " segundos.");
-        }
-    }
-
-    private boolean juegoTerminado() {
-        for (JButton boton : botones) {
-            if (boton.isEnabled()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // Método para ajustar el tamaño de las imágenes a las dimensiones de los botones
-    private ImageIcon redimensionarImagen(String rutaImagen) {
-        // Cargar la imagen
-        ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/img/" + rutaImagen));
-
-        // Obtener el tamaño del botón (suponiendo que los botones tienen el mismo tamaño)
-        int anchoBoton = jButtonCarta1.getWidth();  // O cualquier botón que tenga el tamaño correcto
-        int altoBoton = jButtonCarta1.getHeight();  // Lo mismo con la altura
-
-        // Redimensionar la imagen
-        Image imagen = iconoOriginal.getImage();
-        Image imagenRedimensionada = imagen.getScaledInstance(anchoBoton, altoBoton, Image.SCALE_SMOOTH);
-
-        return new ImageIcon(imagenRedimensionada);
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnComenzar;

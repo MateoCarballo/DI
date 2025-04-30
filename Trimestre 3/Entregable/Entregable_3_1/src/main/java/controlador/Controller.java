@@ -91,6 +91,7 @@ public class Controller implements ActionListener {
 
     private void abrirVentanaJuego() {
         ventanaJ = new VentanaJuego();
+        new JuegoController(ventanaJ); // Pasamos la ventana al controlador específico
         agregarVentana(ventanaJ);
     }
 
